@@ -5,6 +5,8 @@ Inspired by the [website](https://wiki.algo.informatik.tu-darmstadt.de/Main_Page
 catalog algorithms by the general problems they solve and describe them in a more clear and formal way 
 with their invariants, preconditions and postconditions and the example of problems they solve.
 
+I will for each general algorithm try to provide a little bit more formal description, and describe how to identify 
+how a problem is solved by it.
 
 ## Pointer algorithms
 
@@ -27,8 +29,8 @@ with their invariants, preconditions and postconditions and the example of probl
 
 ## Insertion Algorithms 
 
-## In-Place algorithms
-### In Place Merging 
+## In-Place In
+### algorithmsgo Place Merging 
 
 
 
