@@ -21,6 +21,9 @@ how a problem is solved by it.
 ## Element distinctness problem
 * [Wikipedia: Element distinctness problem](https://en.wikipedia.org/wiki/Element_distinctness_problem)
 
+## Finding repeated Elements 
+* [Paper on Finding Repeated Elements by David Gries and J. Misra](http://www.cs.utexas.edu/users/misra/scannedPdf.dir/FindRepeatedElements.pdf)
+
 ## Search Algorithms
 
 ### Binary Search
@@ -29,10 +32,14 @@ how a problem is solved by it.
 
 ## Insertion Algorithms 
 
-## In-Place In
-### algorithmsgo Place Merging 
+## In-Place Algorithms
+### In-Place Merging 
 
+## String Matching Algorithms
 
+## Graph Algorithms
+
+## Pearls
 
 
 
