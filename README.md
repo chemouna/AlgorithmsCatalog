@@ -39,7 +39,31 @@ how a problem is solved by it.
 
 ## Graph Algorithms
 
+## Overlapping subproblems
+
 ## Pearls
 
+## Tree Algorithms 
+
+
+## Data Structures 
+
+### Linear Data Structures 
+
+### Trees
+
+#### B-Trees 
+
+#### Multiway Trees 
+
+#### Space-partitioning trees
+
+#### Application-specific trees 
+
+### Hashes
+
+### Graphes 
+
+### Others 
 
 
