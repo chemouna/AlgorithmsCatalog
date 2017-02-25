@@ -30,6 +30,8 @@ how a problem is solved by it.
 
 ## Selection Algorithms
 
+### Median Finding algorithms
+
 ## Insertion Algorithms 
 
 ## In-Place Algorithms
@@ -68,6 +70,10 @@ how a problem is solved by it.
 ### Hashes
 
 ### Graphes 
+
+### Succint Data Structures
+
+#### Bit Array
 
 ### Others 
 
