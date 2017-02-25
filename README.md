@@ -45,6 +45,11 @@ how a problem is solved by it.
 
 ## Tree Algorithms 
 
+## Computational Geometry Algorithms 
+
+### Closest pair of points problem
+- [Definition in wikipedia](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem)
+
 
 ## Data Structures 
 
