@@ -8,6 +8,8 @@ with their invariants, preconditions and postconditions and the example of probl
 I will for each general algorithm try to provide a little bit more formal description, and describe how to identify 
 how a problem is solved by it.
 
+Note: This is still very much in progress and not polished at all yet.
+
 ## Pointer algorithms
 
 ### Runner technique
