@@ -28,6 +28,28 @@ how a problem is solved by it.
 
 ### Binary Search
 
+#### Pseudo code 
+Given an array A of n elements with values or records A0 ... An−1, sorted such that A0 ≤ ... ≤ An−1, 
+and target value T, find the index of T in A.
+
+1/ Set L to 0 and R to n − 1.
+2/ If L > R, the search terminates as unsuccessful.
+3/ Set m (the position of the middle element) to the floor (the largest previous integer) of (L + R) / 2.
+4/ If Am < T, set L to m + 1 and go to step 2.
+5/ If Am > T, set R to m – 1 and go to step 2.
+6/ Now Am = T, the search is done; return m.
+
+#### Common errors 
+
+#### Variation of binary search
+
+##### Fractional cascading
+
+##### Exponential search
+
+#### Additional resources
+- Column 4 of the book Programming Pearls
+
 ## Selection Algorithms
 
 ### Median Finding algorithms
@@ -52,10 +74,30 @@ how a problem is solved by it.
 ### Closest pair of points problem
 - [Definition in wikipedia](https://en.wikipedia.org/wiki/Closest_pair_of_points_problem)
 
+## Randomized Algorithms
 
 ## Data Structures 
 
 ### Linear Data Structures 
+
+#### Array
+
+#### Stack
+
+#### Bit Array
+
+### Circular Buffer 
+
+#### Implementation 
+
+- One less common but better implementation:
+circular buffer implementation needs only head and tail indices. `size'
+above appears to be redundant.
+
+Implementation-wise, the head and tail indices should *not* be constrained
+to be less than the size of the buffer. They should be allowed to wrap all
+the way back to zero. This allows you to distinguish between the
+completely-empty and completely-full states while using 100% of the storage.
 
 ### Trees
 
@@ -73,7 +115,6 @@ how a problem is solved by it.
 
 ### Succint Data Structures
 
-#### Bit Array
 
 ### Others 
 
