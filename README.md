@@ -90,6 +90,12 @@ and target value T, find the index of T in A.
 
 ### Circular Buffer 
 
+### Disjoint-set data structure
+
+#### Disjoint-set forests 
+
+#### Path compression 
+
 #### Invariants 
 head == tail  iff buffer is empty (this invariant is only valid in the method of implementation where the wrap-around goes back to 0).
 If buffer is not empty, head points at next valid element to be consumed.
