@@ -92,6 +92,16 @@ and target value T, find the index of T in A.
 
 ### Counting Sort 
 
+- Counting sort is an algorithm for sorting a collection of objects according to keys that are small integers (an integer sorting algorithm). 
+  It operates by counting the number of objects that have each distinct key value, and using arithmetic on those counts to determine the positions 
+  of each key value in the output sequence. Its running time is linear in the number of items and the difference between the maximum and minimum 
+  key values, so it is only suitable for direct use in situations where the variation in keys is not significantly greater than the number of items. 
+
+- Counting Sort complexity is O(n + k)
+
+- For problem instances in which the maximum key value is significantly smaller than the number of items, counting sort can be highly space-efficient, 
+  as the only storage it uses other than its input and output arrays is the Count array which uses space O(k)
+
 - It is not enough to know the upper bound to run a counting sort: you need to have enough memory to fit all the counters.
 Consider a situation when you go through an array of 64-bit integers, and find out that the largest element is 2^60. 
 This would mean two things:
