@@ -80,12 +80,12 @@ and target value T, find the index of T in A.
 
 //TODO 
 
+- [Haskell Implementation](TODO)
+- [Java Implementation]()
+
 ### SmoothSort 
 
 ### Poplar Sxsort 
-
-### bucket Sort 
-- idea of the bucket sort is to place items into various buckets based on a key or partial information about a key. 
 
 ### IntroSort 
 
@@ -114,7 +114,37 @@ This is very often a problem with pseudo-polynomial time algorithms.
   using counting sort may makes sense. If this is not the case, a standard comparison-based sort algorithm or even an integer sorting 
   algorithm like radix sort is asymptotically better.
 
-### Radix Sort 
+- [Haskell implementation](TODO)
+- [Java Implementation](TODO)
+
+### Distribution Sort 
+
+#### Bucket Sort 
+- idea of the bucket sort is to place items into various buckets based on a key or partial information about a key. 
+
+- BucketSort Steps :
+    - Set up an array of initially empty "buckets".
+    - Scatter: Go over the original array, putting each object in its bucket.
+    - Sort each non-empty bucket.
+    - Gather: Visit the buckets in order and put all elements back into the original array. 
+
+- for bucket sort to be {\displaystyle O(n)} O(n) on average, the number of buckets n must be equal to the length of the array being sorted, 
+  and the input array must be uniformly distributed across the range of possible bucket values.[1] If these requirements are not met, the 
+  performance of bucket sort will be dominated by the running time of nextSort, which is typically {\displaystyle O(n^{2})} O(n^{2}) insertion sort.
+  
+- Bucket sort’s best case occurs when the data being sorted can be distributed between the buckets perfectly. 
+   An example is [2303, 33, 1044], if buckets can only contain 5 different values then for this example 461 buckets would 
+   need to be initialised. A bucket size of 200-1000 would be much more reasonable. 
+  The inverse is also true; a densely allocated array like [103, 99, 119, 112, 111] performs best when buckets are as small as possible.
+
+- Bucket sort performs at its worst, O(n^2)​​ when all elements at allocated to the same bucket.
+
+#### Radix Sort 
+
+#### Flash Sort
+
+- [Haskell implementation](TODO)
+- [Java Implementation](TODO)
 
 ### QuickSort
 - One of the major factors is that quicksort has better locality of reference -- the next thing to be accessed is 
@@ -126,6 +156,7 @@ This is very often a problem with pseudo-polynomial time algorithms.
 - If a dataset is really huge and doesn't fit into memory, then merge sort works better. 
   It's frequently used in clusters where dataset can span over hundreds of machines.
 
+### External Sorting 
 
 ### In-Place RadixSort 
 
