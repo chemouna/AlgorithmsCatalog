@@ -92,6 +92,17 @@ and target value T, find the index of T in A.
 
 ### Counting Sort 
 
+- It is not enough to know the upper bound to run a counting sort: you need to have enough memory to fit all the counters.
+Consider a situation when you go through an array of 64-bit integers, and find out that the largest element is 2^60. 
+This would mean two things:
+   - You need an O(2^60) memory, and
+   - It is going to take O(2^60) to complete the sort.
+The fact that O(2^60) is the same as O(1) is of little help here, because the constant factor is too large. 
+This is very often a problem with pseudo-polynomial time algorithms.
+
+- In the case where the inputs are arrays with maximum - minimum = O(n log n) (i.e. the range of values is reasonably restricted), 
+  using counting sort may makes sense. If this is not the case, a standard comparison-based sort algorithm or even an integer sorting 
+  algorithm like radix sort is asymptotically better.
 
 ### Radix Sort 
 
@@ -219,6 +230,8 @@ completely-empty and completely-full states while using 100% of the storage.
 ### Data structures for Integer sorting
 
 #### Van Emde Boas Tree
+
+#### Y-fast Trie
 
 #### Bucket Queue
 
