@@ -54,6 +54,8 @@ and target value T, find the index of T in A.
 
 ## Sorting Algorithms 
 
+- [When is each sorting algorithm used ?](http://stackoverflow.com/questions/1933759/when-is-each-sorting-algorithm-used)
+
 ### HeapSort 
 - A heap is a structure designed to solve a common problem. You’ve got a collection of objects, 
   each of which has an associated numeric value. You want, at any time, to be able to find and remove 
@@ -85,7 +87,6 @@ and target value T, find the index of T in A.
 ### bucket Sort 
 - idea of the bucket sort is to place items into various buckets based on a key or partial information about a key. 
 
-
 ### IntroSort 
 
 
@@ -93,6 +94,16 @@ and target value T, find the index of T in A.
 
 
 ### Radix Sort 
+
+### QuickSort
+- One of the major factors is that quicksort has better locality of reference -- the next thing to be accessed is 
+  usually close in memory to the thing you just looked at. By contrast, heapsort jumps around significantly more. 
+  the element of the Since things that are close together will likely be cached together, quicksort tends to be faster.
+
+### MergeSort
+
+- If a dataset is really huge and doesn't fit into memory, then merge sort works better. 
+  It's frequently used in clusters where dataset can span over hundreds of machines.
 
 
 ### In-Place RadixSort 
@@ -205,6 +216,11 @@ completely-empty and completely-full states while using 100% of the storage.
 
 ### Succint Data Structures
 
+### Data structures for Integer sorting
+
+#### Van Emde Boas Tree
+
+#### Bucket Queue
 
 ### Others 
 
