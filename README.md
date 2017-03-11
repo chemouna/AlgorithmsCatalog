@@ -29,7 +29,6 @@ Note: This is still very much in progress and not polished at all yet.
 ## Search Algorithms
 
 ### Binary Search
-
 #### Pseudo code 
 Given an array A of n elements with values or records A0 ... An−1, sorted such that A0 ≤ ... ≤ An−1, 
 and target value T, find the index of T in A.
@@ -251,6 +250,37 @@ Implementation-wise, the head and tail indices should *not* be constrained
 to be less than the size of the buffer. They should be allowed to wrap all
 the way back to zero. This allows you to distinguish between the
 completely-empty and completely-full states while using 100% of the storage.
+
+### Trie
+- an ordered tree data structure that is used to store a dynamic set or associative array where the keys are usually strings.
+
+- Lexicographic sorting of a set of keys can be done with a simple trie-based:
+  - Insert all keys in a trie.
+  - Output all keys in the trie using a pre-order traversal, which results in output that is in lexicographically increasing order.
+
+- Using Tries for approximate matching algorithms:
+
+#### Bitwise Trie 
+
+
+#### DAFSA 
+(Deterministic Acyclic Finite State Automaton)
+
+#### Discrimination Tree 
+
+#### BurstSort 
+
+### Suffix Tree
+
+### Ternary Search Tree 
+
+### B-Trie
+
+### Hash Trie
+
+### HAT-Trie
+
+### Hash array mapped trie
 
 ### Trees
 
