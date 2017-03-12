@@ -139,6 +139,20 @@ This is very often a problem with pseudo-polynomial time algorithms.
 - Bucket sort performs at its worst, O(n^2)​​ when all elements at allocated to the same bucket.
 
 #### Radix Sort 
+- Radix sort is a O(n) sorting algorithm working on integer keys. 
+
+- struct to be sorted has to be able to provide something that acts somewhat like an integer. Radix sort can be extended to floats,
+  pairs, tuples and std::array. So if your struct can provide for example a std::pair<bool, float> and use that as a sort key, 
+  you can sort it using radix sort. 
+
+- Radix sort builds on top of two principles:
+    1. counting sort is a stable sort. If two entries have the same number, they will stay in the same order.
+    2. If you sort a numbers by their lowest digit first, and then do a stable sort on higher digits, the result will be a sorted list. 
+
+- The in-place version of radix sort has a nice benefit: It starts sorting at the most significant digit. The LCD version  made radix
+  sort slow for large keys because it always had to look at every byte of the key. The in-place version could early out after looking 
+  at the first byte, which would potentially make it much faster for large keys.
+
 
 #### Flash Sort
 
@@ -155,11 +169,16 @@ This is very often a problem with pseudo-polynomial time algorithms.
 - If a dataset is really huge and doesn't fit into memory, then merge sort works better. 
   It's frequently used in clusters where dataset can span over hundreds of machines.
 
+### American Flag sort 
+- works similar to counting sort in that you need an array to count how often each element appears. So if we sort bytes, 
+  we also need a count array of 256 elements. Then we also compute the prefix sum of this count array, like we did in 
+  counting sort. Only the final loop is different Since American Flag Sort is in-place, the value in a new output array 
+  we need to swap instead in place
+
+
 ### External Sorting 
 
 ### In-Place RadixSort 
-
-### American Flag sort 
 
 ### Near Sorting Algorithms
 
