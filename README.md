@@ -205,8 +205,8 @@ This is very often a problem with pseudo-polynomial time algorithms.
 * The Algorithm: Loop through the digits from low to high order. For each, use a stable sort to sort the elements according to the current 
   digit, ignoring the other digits.
 
-* Loop Invariant: After sorting with respect to (wrt) the first i low-order digits, the
-elements are sorted wrt the value formed from these i digits. 
+* Loop Invariant: After sorting with respect to  the first i low-order digits, the elements are sorted with respect to the value formed from these i digits. 
+  (Stable sorting allows us to maintain this invariant)
 
 #### Flash Sort
 
