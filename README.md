@@ -55,6 +55,12 @@ and target value T, find the index of T in A.
 
 - [When is each sorting algorithm used ?](http://stackoverflow.com/questions/1933759/when-is-each-sorting-algorithm-used)
 
+### Insertion Sort 
+- Complexity : O(n^2)
+
+### Selection Sort 
+- an in-place comparison sort. It has O(n2) time complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. 
+
 ### HeapSort 
 - A heap is a structure designed to solve a common problem. You’ve got a collection of objects, 
   each of which has an associated numeric value. You want, at any time, to be able to find and remove 
