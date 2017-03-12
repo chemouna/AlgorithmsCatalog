@@ -58,8 +58,47 @@ and target value T, find the index of T in A.
 ### Insertion Sort 
 - Complexity : O(n^2)
 
+```C
+void isort(int *A, int n) {
+  for (int i = 1; i < n; i++) {
+    // insert A[i] into A[0..i-1]
+    int temp = A[i];
+    int j = i-1;
+
+    // shift all A[] > temp
+    while (j >= 0 && A[j] > temp) {
+      A[j+1] = A[j];
+      j--;
+    }
+    A[j+1] = temp;
+  }
+}
+```
+- Loop invariant:
+  At the beginning of each loop, A[0..i-1] is a sorted permutation of the first i elements of A[], and at the end of each 
+  loop A[0..i] is a sorted permutation of the first i+1 elements of A[].
+
+
 ### Selection Sort 
 - an in-place comparison sort. It has O(n2) time complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort. 
+
+```
+void sort(int [] a, int n) {
+  for (int i=0; i<n-1; i++) {
+    int best = i;
+    for (int j=i; j<n; j++) {
+      if (a[j] < a[best]) {
+        best = j;
+      }
+    }
+    swap a[i] and a[best];
+  }
+}
+```
+-  Outer loop invariant: 
+      * a[0...i-1] is sorted
+      * All entries in a[i..n-1] are larger than or equal to the entries in a[0..i-1] 
+- Inner loop invariant: All entries in a[i..j-1] are greater than or equal to a[best]. 
 
 ### HeapSort 
 - A heap is a structure designed to solve a common problem. You’ve got a collection of objects, 
@@ -159,6 +198,15 @@ This is very often a problem with pseudo-polynomial time algorithms.
   sort slow for large keys because it always had to look at every byte of the key. The in-place version could early out after looking 
   at the first byte, which would potentially make it much faster for large keys.
 
+* Preconditions: The input is a list of N values. Each value is an integer with d digits.
+  Each digit is a value from 0 to k − 1, i.e., the value is viewed as an integer base k.
+* Postconditions: The output is a list consisting of the same N values in nondecreasing order.
+
+* The Algorithm: Loop through the digits from low to high order. For each, use a stable sort to sort the elements according to the current 
+  digit, ignoring the other digits.
+
+* Loop Invariant: After sorting with respect to (wrt) the first i low-order digits, the
+elements are sorted wrt the value formed from these i digits. 
 
 #### Flash Sort
 
