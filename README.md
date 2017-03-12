@@ -191,6 +191,11 @@ This is very often a problem with pseudo-polynomial time algorithms.
 
 ## Randomized Algorithms
 
+## Backtracking 
+- Backtracking is a general algorithm for finding all (or some) solutions to some computational problems that incrementally
+  builds candidates to the solutions, and abandons each partial candidate c ("backtracks") as soon as it determines that c 
+  cannot possibly be completed to a valid solution.
+
 ## Data Structures 
 
 ### Linear Data Structures 
@@ -258,7 +263,10 @@ completely-empty and completely-full states while using 100% of the storage.
   - Insert all keys in a trie.
   - Output all keys in the trie using a pre-order traversal, which results in output that is in lexicographically increasing order.
 
-- Using Tries for approximate matching algorithms:
+- Trie allows fast searching for key in huge volume of texts. It is also useful for finding predecessor and successors as well as lexicographically sorting strings.
+
+Exercices: 
+- [Trie application I: Tagalog alphabet sorting](http://sukwonoh.blogspot.fr/2012/09/trie-application-i-topcoder-srm-342.html)
 
 #### Bitwise Trie 
 
@@ -271,6 +279,17 @@ completely-empty and completely-full states while using 100% of the storage.
 #### BurstSort 
 
 ### Suffix Tree
+- built on top of a trie where, instead of just adding the string itself into the trie, you would also add every possible suffix of that string. As an example, if you wanted to index the string banana in a suffix tree, you would build a trie with the following strings:
+```java
+banana
+anana
+nana
+ana
+na
+a
+```
+Once that's done search for any n-gram and see if it is present in the indexed string, the n-gram search is a prefix search of all possible suffixes of the string.
+
 
 ### Ternary Search Tree 
 
@@ -280,8 +299,11 @@ completely-empty and completely-full states while using 100% of the storage.
 
 ### HAT-Trie
 
+### Burst Trie 
+
 ### Hash array mapped trie
-0000
+
+
 ### Trees
 
 #### B-Trees 
