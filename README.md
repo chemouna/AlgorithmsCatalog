@@ -249,6 +249,45 @@ This is very often a problem with pseudo-polynomial time algorithms.
 
 ## String Matching Algorithms
 
+### Knuth–Morris–Pratt algorithm
+
+* Complexity : Since the two portions of the algorithm (search and table building) have of O(k) and O(n), the complexity of the overall algorithm is O(n + k).
+
+* Algorithm Pseudo 
+```
+ algorithm kmp_search:
+    input:
+        an array of characters, S (the text to be searched)
+        an array of characters, W (the word sought)
+    output:
+        an integer (the zero-based position in S at which W is found)
+
+    define variables:
+        an integer, m ← 0 (the beginning of the current match in S)
+        an integer, i ← 0 (the position of the current character in W)
+        an array of integers, T (the table, computed elsewhere)
+
+    while m + i < length(S) do
+        if W[i] = S[m + i] then
+            if i = length(W) - 1 then
+                return m
+            let i ← i + 1
+        else
+            if T[i] > -1 then
+                let m ← m + i - T[i], i ← T[i]
+            else
+                let m ← m + 1, i ← 0
+            
+    (if we reach here, we have searched all of S unsuccessfully)
+    return the length of S
+```
+
+* The partial match table: The numbers in the partial Match Table tell you how many positions are already matched when an error occurs. 
+We can use the values in the partial match table to skip ahead (rather than redoing unnecessary old comparisons) when we find partial matches. The formula works like this:
+If a partial match of length partial_match_length is found and table[partial_match_length] > 1, we may skip ahead partial_match_length - table[partial_match_length - 1] characters.
+- a value T[i] in T is the amount of "backtracking" we need to do after a mismatch
+
+
 ## Graph Algorithms
 
 ## Overlapping subproblems
