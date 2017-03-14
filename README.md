@@ -247,9 +247,19 @@ This is very often a problem with pseudo-polynomial time algorithms.
 ## In-Place Algorithms
 ### In-Place Merging 
 
+## Hashing 
+
+### Double hash technique 
+
 ## String Matching Algorithms
 
+### Rabin-Karp Algorithm 
+
 ### Knuth–Morris–Pratt algorithm
+
+* The basic idea behind the algorithm discovered by Knuth, Morris, and Pratt is this: whenever we detect a mismatch, we
+already know some of the characters in the text (since they matched the pattern characters prior to the mismatch). We can 
+take advantage of this information to avoid backing up the text pointer over all those known characters. 
 
 * Complexity : Since the two portions of the algorithm (search and table building) have of O(k) and O(n), the complexity of the overall algorithm is O(n + k).
 
@@ -286,6 +296,8 @@ This is very often a problem with pseudo-polynomial time algorithms.
 We can use the values in the partial match table to skip ahead (rather than redoing unnecessary old comparisons) when we find partial matches. The formula works like this:
 If a partial match of length partial_match_length is found and table[partial_match_length] > 1, we may skip ahead partial_match_length - table[partial_match_length - 1] characters.
 - a value T[i] in T is the amount of "backtracking" we need to do after a mismatch
+
+### Boyer-Moore Algorithm
 
 
 ## Graph Algorithms
@@ -442,4 +454,7 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 
 ### Others 
 
+## Algorithms that work by building an automata
+* Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
+* Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
 
