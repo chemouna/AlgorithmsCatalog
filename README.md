@@ -299,6 +299,19 @@ If a partial match of length partial_match_length is found and table[partial_mat
 
 ### Boyer-Moore Algorithm
 
+* well-suited for applications in which the pattern is much shorter than the text or where it persists across multiple searches 
+   matches on the tail of the pattern rather than the head, and to skip along the text in jumps of multiple characters rather than 
+   searching every single character in the text. 
+
+* compares the symbols of the pattern from right to left with the text. After a complete match the pattern is shifted according to 
+  how much its widest border allows. After a mismatch the pattern is shifted by the maximum of the values given by the good-suffix 
+  and the bad-character heuristics.
+ 
+* The Boyer-Moore algorithm uses two different heuristics for determining the maximum possible shift distance in case of a mismatch: 
+  the "bad character" and the "good suffix" heuristics. Both heuristics can lead to a shift distance of m. For the bad character heuristics 
+  this is the case, if the first comparison causes a mismatch and the corresponding text symbol does not occur in the pattern at all. 
+  For the good suffix heuristics this is the case, if only the first comparison was a match, but that symbol does not occur elsewhere in the pattern.
+
 
 ## Graph Algorithms
 
