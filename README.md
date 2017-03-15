@@ -444,6 +444,36 @@ function Dijkstra(Graph, source):
 
       return dist[], prev[]
 ```
+
+another nice to express Djikstra's algorithm :
+```
+Dijkstra(G, w, s)  {
+   Initialize-Single-Source(G, s)
+   S ← Ø
+   Q ← V[G]//priority queue by d[v]
+   while Q ≠ Ø do
+      u ← Extract-Min(Q)
+      S ← S U {u}
+      for each vertex v in Adj[u] do
+         Relax(u, v)
+}
+
+Initialize-Single-Source(G, s) {
+   for each vertex v  V(G)
+      d[v] ← ∞
+      π[v] ← NIL
+   d[s] ← 0
+}
+
+Relax(u, v) {
+   //update only if we found a strictly shortest path
+   if d[v] > d[u] + w(u,v) 
+      d[v] ← d[u] + w(u,v)
+      π[v] ← u
+      Update(Q, v)
+}
+```
+
 * In common presentations of Dijkstra's algorithm, initially all nodes are entered into the priority queue. This is, however, not necessary:
   the algorithm can start with a priority queue that contains only one item, and insert new items as they are discovered (instead of doing a decrease-key, 
   check whether the key is in the queue; if it is, decrease its key, otherwise insert it).[3]:198 This variant has the same worst-case bounds as the common 
@@ -460,6 +490,9 @@ function Dijkstra(Graph, source):
 
 * Dijkstra’s algorithm is like Prim’s algorithm in that both algorithms use a minpriority queue to find the “lightest” vertex outside a given set 
   (the set S in Dijkstra’s algorithm and the tree being grown in Prim’s algorithm).
+
+* to examine an edge to see if it offers a better path to a node is referred to as relaxing the edge (because in general mathematically, relaxation 
+is making a change that reduces constraints. When the Dijkstra algorithm examines an edge, it removes an edge from the pool, thereby reducing the number of constraints)
 
 ##### Fast marching method
 
@@ -480,6 +513,9 @@ function Dijkstra(Graph, source):
 #### Flood fill
 
 #### Floyd–Warshall algorithm 
+
+
+#### Gabow's Shortest Paths Algorithm
 
 ## Overlapping subproblems
 
