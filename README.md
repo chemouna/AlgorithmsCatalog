@@ -410,10 +410,76 @@ and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609
 
 ### Minimum Spanning Trees
 
-### Shortest Path Problem
+### Single-Source Shortest Paths Algotithms
 
-### Djikstra's Algorithm
+#### Djikstra's Algorithm
 
+* This algorithm makes no attempt to direct "exploration" towards the destination as one might expect. Rather, the sole consideration in determining the next 
+ "current" intersection is its distance from the starting point. This algorithm therefore expands outward from the starting point, interactively considering 
+ every node that is closer in terms of shortest path distance until it reaches the destination. When understood in this way, it is clear how the algorithm 
+ necessarily finds the shortest path. However, it may also reveal one of the algorithm's weaknesses: its relative slowness in some topologies. 
+
+* asymptotically the fastest known single-source shortest-path algorithm for arbitrary directed graphs with unbounded non-negative weights.
+
+```
+function Dijkstra(Graph, source):
+     create vertex set Q
+ 
+     for each vertex v in Graph:             // Initialization
+          dist[v] ← INFINITY                  // Unknown distance from source to v
+          prev[v] ← UNDEFINED                 // Previous node in optimal path from source
+          add v to Q                          // All nodes initially in Q (unvisited nodes)
+ 
+          dist[source] ← 0                        // Distance from source to source
+      
+         while Q is not empty:
+           u ← vertex in Q with min dist[u]    // Node with the least distance will be selected first
+           remove u from Q 
+         
+           for each neighbor v of u:           // where v is still in Q.
+              alt ← dist[u] + length(u, v)
+              if alt < dist[v]:               // A shorter path to v has been found
+                  dist[v] ← alt 
+                  prev[v] ← u 
+
+      return dist[], prev[]
+```
+* In common presentations of Dijkstra's algorithm, initially all nodes are entered into the priority queue. This is, however, not necessary:
+  the algorithm can start with a priority queue that contains only one item, and insert new items as they are discovered (instead of doing a decrease-key, 
+  check whether the key is in the queue; if it is, decrease its key, otherwise insert it).[3]:198 This variant has the same worst-case bounds as the common 
+  variant, but maintains a smaller priority queue in practice, speeding up the queue operations.[4]
+
+  Moreover, not inserting all nodes in a graph makes it possible to extend the algorithm to find the shortest path from a single source to the closest of a 
+  set of target nodes on infinite graphs or those too large to represent in memory. The resulting algorithm is called uniform-cost search (UCS) in the artificial intelligence literature 
+
+* Breadth-first search can be viewed as a special-case of Dijkstra's algorithm on unweighted graphs, where the priority queue degenerates into a FIFO queue.
+
+* Shortest-paths algorithms typically rely on the property that a shortest path between two vertices contains other shortest paths within it. 
+  
+* A shortest path cannot contain a cycle neither negative or positive weight cycle 
+
+* Dijkstra’s algorithm is like Prim’s algorithm in that both algorithms use a minpriority queue to find the “lightest” vertex outside a given set 
+  (the set S in Dijkstra’s algorithm and the tree being grown in Prim’s algorithm).
+
+##### Fast marching method
+
+##### Variants of Djikstra's Algorithm
+
+###### Dial's Algorithm 
+
+* Using Bucket queues 
+
+* Using Van Emde Boas tree 
+
+* Using a radix heap 
+ 
+##### A* search algorithm
+
+#### Bellman–Ford algorithm 
+
+#### Flood fill
+
+#### Floyd–Warshall algorithm 
 
 ## Overlapping subproblems
 
