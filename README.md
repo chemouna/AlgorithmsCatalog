@@ -249,11 +249,16 @@ This is very often a problem with pseudo-polynomial time algorithms.
 
 ## Hashing 
 
+### Modular Hashing 
+
+### Horner's method 
+
+### Rolling Hashes 
+
+
 ### Double hash technique 
 
 ## String Matching Algorithms
-
-### Rabin-Karp Algorithm 
 
 ### Knuth–Morris–Pratt algorithm
 
@@ -312,8 +317,81 @@ If a partial match of length partial_match_length is found and table[partial_mat
   this is the case, if the first comparison causes a mismatch and the corresponding text symbol does not occur in the pattern at all. 
   For the good suffix heuristics this is the case, if only the first comparison was a match, but that symbol does not occur elsewhere in the pattern.
 
+### Boyer–Moore–Horspool or Horspool algorithm
+
+- instead of the "bad character" that caused the mismatch, in each case the rightmost character of the current text window is used 
+  for determining the shift distance.
+- preprocesses the pattern to produce a table containing, for each symbol in the alphabet, the number of characters that can safely be skipped. 
+
+```
+function preprocess(pattern)
+    T ← new table of 256 integers
+    for i from 0 to 256 exclusive
+        T[i] ← length(pattern)
+    for i from 0 to length(pattern) - 1 exclusive
+        T[pattern[i]] ← length(pattern) - 1 - i
+    return T
+```
+```
+ function search(needle, haystack)
+    T ← preprocess(needle)
+    skip ← 0
+    while length(haystack) - skip ≥ length(needle)
+        i ← length(needle) - 1
+        while haystack[skip + i] = needle[i]
+            if i = 0
+                return skip
+            i ← i - 1
+        skip ← skip + T[haystack[skip + length(needle) - 1]]
+    return not-found
+```
+### Rabin-Karp algorithm 
+
+* Rabin–Karp algorithm is a randomized algorithm for the string search problem that finds all probable matches 
+for the needle in the haystack in linear time.
+
+* The runtime of the Rabin-Karp algorithm is, in the worst case, O(|P||T|). This happens if by sheer dumb luck we end up having a hash collision on
+ every length-|P| substring of T.  In the average case, though, it can be shown that the number of hash collisions is expected O(1), in which case the
+ runtime of the algorithm is O(|P| + |T|), asymptotically much faster than the naive implementation.
+ 
+* Compute a hash function for the pattern and then look for a match by using the same hash function for each possible M-character 
+  substring of the text. If we find a text substring with the same hash value as the pattern, we can check for a match. 
+  Rabin and Karp showed that it is easy to compute hash functions for M-character substrings in constant time (after some preprocessing),
+  which leads to a linear-time substring search in practical situations 
+
+* Using Monte Carlo correctness:
+//TODO
+
+* Using Las Vegas Algorithm: 
+//TODO 
+
+* Rabin–Karp algorithm is inferior for single pattern searching to Knuth–Morris–Pratt algorithm, Boyer–Moore string search algorithm and 
+  other faster single pattern string searching algorithms because of its slow worst case behavior. However, it is an algorithm of choice 
+  for multiple pattern search. 
+
+#### Rabin fingerprint
+treats every substring as a number in some base, the base being usually a large prime. For example, if the substring is "hi" 
+and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609 (ASCII of 'h' is 104 and of 'i' is 105). 
+
+
+
+### Aho–Corasick algorithm
+ 
+
+## Algorithms on arrays
+
+### Sliding Window Algorithm
+
+#### minimum on a sliding window algorithm 
 
 ## Graph Algorithms
+
+### Minimum Spanning Trees
+
+### Shortest Path Problem
+
+### Djikstra's Algorithm
+
 
 ## Overlapping subproblems
 
@@ -407,7 +485,6 @@ Exercices:
 
 #### Bitwise Trie 
 
-
 #### DAFSA 
 (Deterministic Acyclic Finite State Automaton)
 
@@ -453,7 +530,7 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 
 ### Hashes
 
-### Graphes 
+### Graphs 
 
 ### Succint Data Structures
 
