@@ -249,12 +249,30 @@ This is very often a problem with pseudo-polynomial time algorithms.
 
 ## Hashing 
 
+* A simple hash function works by taking the "component parts" of the input (characters in the case of a string), and multiplying them by the 
+  powers of some constant, and adding them together in some integer type. So for example a typical (although not especially good) hash of a string might be:
+  ```
+  (first char) + k * (second char) + k^2 * (third char) + ... 
+  ```
+* It turns out that "because of the nature of maths", if the constant used in the hash, and the number of buckets, are coprime, then collisions are minimised in 
+  some common cases. If they are not coprime, then there are some fairly simple relationships between inputs for which collisions are not minimised. All the hashes 
+  come out equal modulo the common factor, which means they'll all fall into the 1/n th of the buckets which have that value modulo the common factor. You get n 
+  times as many collisions, where n is the common factor, hashtable implementations obviously have no control over the items put into them. They can't prevent them 
+  being related. So the thing to do is to ensure that the constant and the bucket counts are coprime.  
+  a paranoid hashtable can't assume a good hash function, so should use a prime number of buckets. Similarly a paranoid hash function should use a largeish prime 
+  constant, to reduce the chance that someone uses a number of buckets which happens to have a common factor with the constant. 
+  
+  So putting the principle that "everything has to be prime" is a sufficient but not a necessary condition for good distribution over hashtables. It allows everybody to 
+  interoperate without needing to assume that the others have followed the same rule. 
+  
+
 ### Modular Hashing 
 
 ### Horner's method 
 
 ### Rolling Hashes 
 
+### Carter-Wegman class of hash functions
 
 ### Double hash technique 
 
@@ -359,15 +377,19 @@ for the needle in the haystack in linear time.
   Rabin and Karp showed that it is easy to compute hash functions for M-character substrings in constant time (after some preprocessing),
   which leads to a linear-time substring search in practical situations 
 
-* Using Monte Carlo correctness:
-//TODO
+* Using Monte Carlo:
+always returns true if the hash code matche
 
 * Using Las Vegas Algorithm: 
-//TODO 
+check if the string matches character by character once their hashes are equal.
 
 * Rabin–Karp algorithm is inferior for single pattern searching to Knuth–Morris–Pratt algorithm, Boyer–Moore string search algorithm and 
   other faster single pattern string searching algorithms because of its slow worst case behavior. However, it is an algorithm of choice 
   for multiple pattern search. 
+
+* Due to the Birthday paradox, if you want to expect zero collisions, the size of your prime for Rabin-Karp should be about n^2 or more, 
+  where n is the length of the "haystack" string.
+
 
 #### Rabin fingerprint
 treats every substring as a number in some base, the base being usually a large prime. For example, if the substring is "hi" 
