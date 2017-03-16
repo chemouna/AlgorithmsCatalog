@@ -509,6 +509,13 @@ Relax(u, v) {
 * to examine an edge to see if it offers a better path to a node is referred to as relaxing the edge (because in general mathematically, relaxation 
 is making a change that reduces constraints. When the Dijkstra algorithm examines an edge, it removes an edge from the pool, thereby reducing the number of constraints)
 
+* Problems solved with Djikstra
+- From Top Coder :
+     [RoboCourier](https://community.topcoder.com/stat?c=problem_statement&pm=1749&rd=4555)
+     [IslandFerries](https://community.topcoder.com/stat?c=problem_statement&pm=2437&rd=5069)
+     [DungeonEscape](https://community.topcoder.com/stat?c=problem_statement&pm=2449&rd=5073)
+     [BombMan](https://community.topcoder.com/stat?c=problem_statement&pm=2274&rd=5009)
+     <!--  -->
 ##### Fast marching method
 
 ##### Variants of Djikstra's Algorithm
