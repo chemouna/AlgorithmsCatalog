@@ -409,6 +409,21 @@ and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609
 ## Graph Algorithms
 
 ### Minimum Spanning Trees
+a spanning tree of a graph is a connected subgraph with no cycles that includes all the vertices. 
+A minimum spanning tree (MST ) of an edge-weighted graph is a spanning tree whose weight (the sum of the weights 
+of its edges) is no larger than the weight of any other spanning tree. 
+
+#### Prim’s algorithm 
+
+#### Kruskal’s algorithm 
+
+#### Minimum spanning forest 
+If a graph is not connected, we can adapt our algorithms to compute the MSTs of each of its connected components known
+as a minimum spanning forest.
+
+* Example problems solved by MST:
+//TODO
+//TODO problems from topcoder
 
 ### Single-Source Shortest Paths Algotithms
 
@@ -513,6 +528,39 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
 #### Flood fill
 
 #### Floyd–Warshall algorithm 
+* calculates the shortest routes between all pairs of nodes in a single run! Cycle weights must be non-negative, and the graph must be directed 
+
+```
+let dist be a |V| × |V| array of minimum distances initialized to ∞ 
+ for each vertex v
+     dist[v][v] ← 0
+  for each edge (u,v)
+     dist[u][v] ← w(u,v)  // the weight of the edge (u,v)
+  for k from 1 to |V|
+    for i from 1 to |V|
+       for j from 1 to |V|
+          if dist[i][j] > dist[i][k] + dist[k][j] 
+             dist[i][j] ← dist[i][k] + dist[k][j]
+         end if
+```
+
+* Running Dijkstra for all nodes gives you O(VE + V^2log V), while Floyd's is O(V^3). If E = O(V^2), 
+ then the two are theoretically identical, with Floyd being faster in practice. If you E = O(V), then 
+ running Dijkstra for all nodes if better both in theory and in practice.
+ Basically, run Dijkstra from all nodes if you expect to have about as many edges as you have nodes, and run 
+ Floyd if you expect to have almost complete graphs. 
+
+#### Johnson's algorithm
+A way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph. It allows some of the edge 
+weights to be negative numbers, but no negative-weight cycles may exist.
+  
+* Johnson's algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph.
+
+* Johnson's algorithm is a slight modification to running Dijkstra's algorithm from each node that allows that approach to work even if the graph contains negative edges (as long as there aren't any negative cycles). The algorithm works by first running Bellman-Ford on the graph to transform it to a graph with no negative edges, then using Dijkstra's algorithm starting at each vertex. Because Bellman-Ford runs in time O(mn), the overall asymptotic runtime is still O(mn + n2 log n), so if m = o(n2) (note that this is little-o of n), this approach is asymptotically faster than using Floyd-Warshall.
+
+The one catch here is that this assumes that you have Dijkstra's algorithm backed by a Fibonacci heap. If you don't have Fibonacci heap available and aren't willing to put in the 72 hours necessary to build, debug, and test one, then you can still use a binary heap for Dijkstra's algorithm; it just increases the runtime to O(m log n), so this version of Johnson's algorithm runs in O(mn log n). This is no longer always asymptotically faster than Floyd-Warshall, because if m = Ω(n2) then Floyd-Warshall runs in O(n3) whileJohnson's algorithm runs in O(n3 log n) 
+  - With a Fibonacci heap, Johnson's algorithm is always asymptotically at least as good as Floyd-Warshall, though it's harder to code up.
+  - With a binary heap, Johnson's algorithm is usually asymptotically at least as good as Floyd-Warshall, but is not a good option when dealing with large, dense graphs. 
 
 
 #### Gabow's Shortest Paths Algorithm
@@ -556,12 +604,47 @@ Binary heaps are a common way of implementing priority queues.
 #### B-Heap 
 
 #### Binomial Heap 
+* a heap similar to a binary heap but also supports quick merging of two heaps. This is achieved by using a special tree structure. 
+It is important as an implementation of the mergeable heap abstract data type (also called meldable heap), which is a priority queue supporting merge operation.
+
+The name comes from the shape: a binomial tree of order {\displaystyle n} n has {\displaystyle {\tbinom {n}{d}}} \tbinom n d nodes at depth {\displaystyle d} d. 
+ (Binomial coefficient)
+ 
+*  binomial heap is implemented as a set of binomial trees that satisfy the binomial heap properties:
+   - Each binomial tree in a heap obeys the minimum-heap property: the key of a node is greater than or equal to the key of its parent.
+   - There can only be either one or zero binomial trees for each order, including zero order.
+
+* Merge Operation : the simplest and most important operation is the merging of two binomial trees of the same order within a binomial heap. 
+  Due to the structure of binomial trees, they can be merged trivially. As their root node is the smallest element within the tree, by comparing 
+  the two keys, the smaller of them is the minimum key, and becomes the new root node. Then the other tree becomes a subtree of the combined tree. 
+
 
 #### Min-max-median Heap
 
 #### D-ary Heap
 
 #### Fibonacci Heap 
+* Fibonacci heaps have asymptotically good runtime guarantees for many operations. In particular, insert, peek, and decrease-key all
+run in amortized O(1) time. dequeueMin and delete each run in amortized O(lg n) time. This allows algorithms that rely heavily on decrease-key
+to gain significant performance boosts.  For example, Dijkstra's algorithm for single-source shortest paths can be shown to run in O(m + n lg n) 
+using a Fibonacci heap, compared to O(m lg n) using a standard binary or binomial heap.
+ 
+* Fibonacci heaps are asymptotically great in an amortized sense, they have huge constant factors in practice.
+
+* find-minimum operation takes constant (O(1)) amortized time.[1] The insert and decrease key operations also work in constant amortized time.
+  Deleting an element (most often used in the special case of deleting the minimum element) works in O(log n) amortized time, where n is the size of the heap.
+  
+  So starting from an empty data structure, any sequence of a insert and decrease key operations and b delete operations would take O(a + b log n) worst case time,
+  where n is the maximum heap size. In a binary or binomial heap such a sequence of operations would take O((a + b) log n) time. A Fibonacci heap is thus better 
+  than a binary or binomial heap when b is smaller than a by a non-constant factor.
+  
+* The primary difference between the Fibonacci heap and the binomial heap is that it defers all ‘clean up’ jobs to a point where they are more convenient,
+   guarenteeing Θ(1) for several operations. Due to the deferred clean up, the worst case time complexity of the delete and extract minimum operations is 
+   O(n), however they are O(logn) amortised. 
+
+* each of the trees of the fibonacci heap has to have at least Fn+2 nodes in them, where Fn + 2 is the (n + 2)nd Fibonacci number.
+  So why is it called a Fibonacci heap ? Because each tree of order n has to have at least Fn+2 nodes in it.
+  
 
 #### Pairing Heap 
 
