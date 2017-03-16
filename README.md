@@ -515,7 +515,8 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
      [IslandFerries](https://community.topcoder.com/stat?c=problem_statement&pm=2437&rd=5069)
      [DungeonEscape](https://community.topcoder.com/stat?c=problem_statement&pm=2449&rd=5073)
      [BombMan](https://community.topcoder.com/stat?c=problem_statement&pm=2274&rd=5009)
-     <!--  -->
+     [KiloManX](https://community.topcoder.com/stat?c=problem_statement&pm=2288&rd=4725)
+     
 ##### Fast marching method
 
 ##### Variants of Djikstra's Algorithm
