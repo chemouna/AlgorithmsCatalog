@@ -413,15 +413,26 @@ and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609
 A minimum spanning tree (MST ) of an edge-weighted graph is a spanning tree whose weight (the sum of the weights 
 of its edges) is no larger than the weight of any other spanning tree. 
 
-* finds an edge of the least possible weight that connects any two trees in the forest.[1] It is a greedy algorithm in graph
-  theory as it finds a minimum spanning tree for a connected weighted graph adding increasing cost arcs at each step. 
-  It finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in 
-  the tree is minimized. If the graph is not connected, then it finds a minimum spanning forest (a minimum spanning tree for 
-  each connected component). 
-
 #### Prim’s algorithm 
 
 #### Kruskal’s algorithm 
+* finds an edge of the least possible weight that connects any two trees in the forest. It is a greedy algorithm in graph
+theory as it finds a minimum spanning tree for a connected weighted graph adding increasing cost arcs at each step. 
+It finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in 
+the tree is minimized. If the graph is not connected, then it finds a minimum spanning forest (a minimum spanning tree for 
+each connected component).
+  
+```
+KRUSKAL(G):
+  A = ∅
+  foreach v ∈ G.V:
+     MAKE-SET(v)
+  foreach (u, v) in G.E ordered by weight(u, v), increasing:
+     if FIND-SET(u) ≠ FIND-SET(v):
+        A = A ∪ {(u, v)}
+        UNION(u, v)
+ return A   
+```
 
 #### Minimum spanning forest 
 If a graph is not connected, we can adapt our algorithms to compute the MSTs of each of its connected components known
