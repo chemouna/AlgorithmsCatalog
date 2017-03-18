@@ -577,7 +577,33 @@ The one catch here is that this assumes that you have Dijkstra's algorithm backe
 
 ## Pearls
 
-## Tree Algorithms 
+## Tree and Graph Traversal
+
+### BFS 
+
+- Non recursive implementation pseudo code:
+```
+Breadth-First-Search(Graph, root):
+    create empty set S
+    create empty queue Q
+
+    root.parent = NIL
+    add root to S
+    Q.enqueue(root)
+
+    while Q is not empty:
+        current = Q.dequeue()
+        if current is the goal:
+            return current
+        for each node n that is adjacent to current:
+            if n is not in S:
+                add n to S
+                n.parent = current
+                Q.enqueue(n)
+```
+
+### DFS 
+
 
 ## Computational Geometry Algorithms 
 
