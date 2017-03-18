@@ -581,7 +581,7 @@ The one catch here is that this assumes that you have Dijkstra's algorithm backe
 
 ### BFS 
 
-- Pseudo code :
+* Pseudo code :
 ```
 Breadth-First-Search(Graph, root):
     create empty set S
@@ -601,7 +601,9 @@ Breadth-First-Search(Graph, root):
                 n.parent = current
                 Q.enqueue(n)
 ```
-
+* Example problems solved with BFS 
+   - [SmartWordToy Problem](https://community.topcoder.com/stat?c=problem_statement&pm=3935&rd=6532)
+   
 ### DFS 
 
 
@@ -789,3 +791,6 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
 * Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
 
+
+### Blogs with problems solved with algorithms
+* [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
