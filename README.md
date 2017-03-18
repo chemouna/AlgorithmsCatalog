@@ -581,7 +581,7 @@ The one catch here is that this assumes that you have Dijkstra's algorithm backe
 
 ### BFS 
 
-- Non recursive implementation pseudo code:
+- Pseudo code :
 ```
 Breadth-First-Search(Graph, root):
     create empty set S
