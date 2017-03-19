@@ -550,6 +550,7 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
 
 #### Bellman–Ford algorithm 
 
+
 #### Flood fill
 
 #### Floyd–Warshall algorithm 
@@ -640,11 +641,14 @@ level n/4 nodes and in BFS we need to have every level one by one in queue).
 * The time complexity of IDDFS works out to be the same as depth-first search, i.e.  O(b^d) where b is the branching factor and d is the 
   depth of the goal, and space complexity of IDDFS is O(d) where d is the depth of the goal.
 
+### Degeneracy of a graph
+
+#### K-Cores graph algorithm 
 
 ### Topological Sorting
 
 #### Kahn's algorithm 
-``
+```
 L ← Empty list that will contain the sorted elements
 S ← Set of all nodes with no incoming edges
 while S is non-empty do
@@ -662,6 +666,29 @@ else
 
 ### Coffman–Graham algorithm
  
+## Dynamic programming 
+
+### Longest increasing subsequence
+
+### Longest common subsequence problem
+
+
+```
+function LCSLength(X[1..m], Y[1..n])
+    C = array(0..m, 0..n)
+    for i := 0..m
+       C[i,0] = 0
+    for j := 0..n
+       C[0,j] = 0
+    for i := 1..m
+        for j := 1..n
+            if X[i] = Y[j]
+                C[i,j] := C[i-1,j-1] + 1
+            else
+                C[i,j] := max(C[i,j-1], C[i-1,j])
+    return C[m,n]
+```
+
 ## Computational Geometry Algorithms 
 
 ### Closest pair of points problem
