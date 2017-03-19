@@ -623,6 +623,21 @@ Breadth-First-Search(Graph, root):
    
 ### DFS 
 
+* If you know a solution is not far from the root of the tree, a breadth first search (BFS) might be better. 
+  If the tree is very deep and solutions are rare, depth first search (DFS) might take an extremely long time, 
+  but BFS could be faster. If the tree is very wide, a BFS might need too much memory, so it might be completely impractical. 
+  If solutions are frequent but located deep in the tree, BFS could be impractical. If the search tree is very deep you will 
+  need to restrict the search depth for depth first search (DFS)
+
+* BFS goes level by level, but requires more space. The space required by DFS is O(d) where d is depth of tree, but space required 
+by BFS is O(n) where n is number of nodes in tree (Why? Note that the last level of tree can have around n/2 nodes and second last 
+level n/4 nodes and in BFS we need to have every level one by one in queue).
+
+### Iterative deepening 
+* a depth-limited version of depth-first search is run repeatedly with increasing depth limits until the goal is found. IDDFS is equivalent 
+  to breadth-first search, but uses much less memory.
+
+
 ### Topological Sorting
 
 #### Kahn's algorithm 
@@ -642,6 +657,8 @@ else
     return L (a topologically sorted order)
 ```
 
+### Coffman–Graham algorithm
+ 
 ## Computational Geometry Algorithms 
 
 ### Closest pair of points problem
