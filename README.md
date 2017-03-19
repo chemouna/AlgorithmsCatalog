@@ -637,6 +637,9 @@ level n/4 nodes and in BFS we need to have every level one by one in queue).
 * a depth-limited version of depth-first search is run repeatedly with increasing depth limits until the goal is found. IDDFS is equivalent 
   to breadth-first search, but uses much less memory.
 
+* The time complexity of IDDFS works out to be the same as depth-first search, i.e.  O(b^d) where b is the branching factor and d is the 
+  depth of the goal, and space complexity of IDDFS is O(d) where d is the depth of the goal.
+
 
 ### Topological Sorting
 
