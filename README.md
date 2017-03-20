@@ -630,9 +630,35 @@ Breadth-First-Search(Graph, root):
   If solutions are frequent but located deep in the tree, BFS could be impractical. If the search tree is very deep you will 
   need to restrict the search depth for depth first search (DFS)
 
+* DFS is typically used to traverse an entire graph, and takes time Θ(|V| + |E|),[4] linear in the size of the graph. 
+  it uses space O(|V|) in the worst case to store the stack of vertices on the current search path as well as the set 
+  of already-visited vertices.
+
 * BFS goes level by level, but requires more space. The space required by DFS is O(d) where d is depth of tree, but space required 
-by BFS is O(n) where n is number of nodes in tree (Why? Note that the last level of tree can have around n/2 nodes and second last 
-level n/4 nodes and in BFS we need to have every level one by one in queue).
+  by BFS is O(n) where n is number of nodes in tree (Why? Note that the last level of tree can have around n/2 nodes and second last 
+  level n/4 nodes and in BFS we need to have every level one by one in queue).
+
+Recursive DFS:
+```
+procedure DFS(G,v):
+      label v as discovered
+      for all edges from v to w in G.adjacentEdges(v) do
+          if vertex w is not labeled as discovered then
+              recursively call DFS(G,w)
+```
+
+Non recursive DFS:
+```
+procedure DFS-iterative(G,v):
+     let S be a stack
+     S.push(v)
+     while S is not empty
+         v = S.pop()
+         if v is not labeled as discovered:
+             label v as discovered
+             for all edges from v to w in G.adjacentEdges(v) do 
+                 S.push(w)
+```
 
 ### Iterative deepening 
 * a depth-limited version of depth-first search is run repeatedly with increasing depth limits until the goal is found. IDDFS is equivalent 
