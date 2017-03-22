@@ -686,6 +686,17 @@ dfs(graph *g, int v) {
     else if ((!processed[y]) || (g->directed))
       process_edge(v,y);
 ```
+Finding cycle can be done with the above algorithm by just adding an implementation for process_edge :
+```
+process_edge(int x, int y) {
+  if (parent[x] != y) { /* found back edge! */
+     printf("Cycle from %d to %d:",y,x);
+     find_path(y,x,parent);
+     printf("\n\n");
+     finished = TRUE;
+ }
+}
+```
 
 ### Iterative deepening 
 * a depth-limited version of depth-first search is run repeatedly with increasing depth limits until the goal is found. IDDFS is equivalent 
