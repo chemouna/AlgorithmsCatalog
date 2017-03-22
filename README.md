@@ -717,13 +717,20 @@ searches, one on G and one on transpose of G.
 Kosaraju’s algorithm:
 ```
 Given a digraph G, use DepthFirstOrder to compute the reverse postorder of its reverse, Gr.
-    ■ Run standard DFS on G, but consider the unmarked vertices in the order just computed instead of the standard numerical order.
-    ■ All vertices reached on a call to the recursive dfs() from the constructor are in a strong component (!), so identify them as in CC.
-
+    - Run standard DFS on G, but consider the unmarked vertices in the order just computed instead of the standard numerical order.
+    - All vertices reached on a call to the recursive dfs() from the constructor are in a strong component (!), so identify them as in CC.
 ```
 - Kosaraju’s algorithm is an extreme example of a method that is easy to code but difficult to understand. Despite its mysterious nature,
   if you follow the proof from Algorithms 4th Edition book for example you can be convinced that the algorithm is correct: 
-
+  Algotithm: 
+  ```
+    - Create a order of vertices by finish time in decreasing order.
+    - Reverse the graph
+    - Do a DFS on reverse graph by finish time of vertex and created strongly connected components.
+    - Runtime complexity - O(V + E)
+    - Space complexity - O(V)
+  ```
+ 
 ### Topological Sorting 
 
 ### Degeneracy of a graph
