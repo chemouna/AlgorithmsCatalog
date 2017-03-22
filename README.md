@@ -667,6 +667,16 @@ procedure DFS-iterative(G,v):
 * The time complexity of IDDFS works out to be the same as depth-first search, i.e.  O(b^d) where b is the branching factor and d is the 
   depth of the goal, and space complexity of IDDFS is O(d) where d is the depth of the goal.
 
+### Strongly Connected Components 
+STRONGLY-CONNECTED-COMPONENTS.
+   1. call DFS.G/ to compute finishing times u.f for each vertex u
+   2. compute transpose of G
+   3. call DFS. on transpose of G, but in the main loop of DFS, consider the vertices in order of decreasing u.f (as computed in line 1)
+   4. output the vertices of each tree in the depth-first forest formed in line 3 as a separate strongly connected component
+this linear-time (i.e., O(V+E)-time) algorithm computes the strongly connected components of a directed graph G=(V,E) using two depth-first
+searches, one on G and one on transpose of G.
+
+
 ### Degeneracy of a graph
 
 #### K-Cores graph algorithm 
