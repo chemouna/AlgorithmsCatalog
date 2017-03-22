@@ -659,6 +659,33 @@ procedure DFS-iterative(G,v):
              for all edges from v to w in G.adjacentEdges(v) do 
                  S.push(w)
 ```
+* An important property of a depth-first search is that it partitions the edges of an undirected graph into exactly two classes: tree edges and back edges. 
+The tree edges discover new vertices, and are those encoded in the parent relation. Back edges are those whose other endpoint is an ancestor of the vertex 
+being expanded, so they point back into the tree. An amazing property of depth-first search is that all edges fall into these two classes. 
+
+* DFS with processing methods to use for solving problems
+```C
+dfs(graph *g, int v) {
+  edgenode *p; /* temporary pointer */
+  int y; /* successor vertex */
+  if (finished) return; /* allow for search termination */
+  discovered[v] = TRUE;
+  time = time + 1;
+  entry_time[v] = time;
+
+  process_vertex_early(v);
+  
+  p = g->edges[v];
+  while (p != NULL) {
+    y = p->y;
+    if (discovered[y] == FALSE) {
+      parent[y] = v;
+      process_edge(v,y);
+      dfs(g,y);
+    }
+    else if ((!processed[y]) || (g->directed))
+      process_edge(v,y);
+```
 
 ### Iterative deepening 
 * a depth-limited version of depth-first search is run repeatedly with increasing depth limits until the goal is found. IDDFS is equivalent 
@@ -675,6 +702,8 @@ STRONGLY-CONNECTED-COMPONENTS.
    4. output the vertices of each tree in the depth-first forest formed in line 3 as a separate strongly connected component
 this linear-time (i.e., O(V+E)-time) algorithm computes the strongly connected components of a directed graph G=(V,E) using two depth-first
 searches, one on G and one on transpose of G.
+
+### Topological Sorting 
 
 
 ### Degeneracy of a graph
