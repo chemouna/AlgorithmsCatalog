@@ -413,6 +413,15 @@ and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609
 A minimum spanning tree (MST ) of an edge-weighted graph is a spanning tree whose weight (the sum of the weights 
 of its edges) is no larger than the weight of any other spanning tree. 
 
+```
+GENERIC-MST.G;w/
+A = Empty
+while A does not form a spanning tree
+    find an edge (u, v) that is safe for A
+    A = A union {(u, v)}
+return A
+```
+
 #### Prim’s algorithm 
 
 #### Kruskal’s algorithm 
@@ -433,6 +442,10 @@ KRUSKAL(G):
         UNION(u, v)
  return A   
 ```
+
+* With Kruskal’s algorithm and Prim’s algorithm, we can easily make each of them run in time O(E lgV), using ordinary binary heaps. 
+  By using Fibonacci heaps, Prim’s algorithm runs in time O(E + V lg V), which improves over the binary-heap implementation 
+  if |V| is much smaller than |E|. 
 
 #### Minimum spanning forest 
 If a graph is not connected, we can adapt our algorithms to compute the MSTs of each of its connected components known
