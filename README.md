@@ -464,12 +464,58 @@ KRUSKAL(G):
  along with a connected operation for determining whether  two sites are in the same component and a count
  operation that returns the total number of components. 
  
- - many applications for union-find data structur:
+- many applications for union-find data structur:
      - Friends in a social network
      - Pixels in a digital photo
      - Computers in a network
      ....
+-  a disjoint-set data structure, also called a union–find data structure or merge–find set, is a data structure that keeps track of a set of elements partitioned into a number of disjoi   nt (nonoverlapping) subsets. 
+ 
+- Union by rank: always attach the smaller tree to the root of the larger tree. Since it is the depth of the tree that affects the running time, the tree with 
+  smaller depth gets added under the root of the deeper tree, which only increases the depth if the depths were equal. 
+  (O(log n) algorithm)
+  
+```
+ function MakeSet(x)
+     x.parent := x
+     x.rank   := 0
+     
+ function Union(x, y)
+     xRoot := Find(x)
+     yRoot := Find(y)
+     // if x and y are already in the same set (i.e., have the same root or representative)
+     if xRoot == yRoot
+         return
 
+     // x and y are not in same set, so we merge them
+     if xRoot.rank < yRoot.rank
+         xRoot.parent := yRoot
+     else if xRoot.rank > yRoot.rank
+         yRoot.parent := xRoot
+     else
+         yRoot.parent := xRoot
+         xRoot.rank := xRoot.rank + 1
+```
+
+- Path compression
+ flattening the structure of the tree whenever Find is used on it. The idea is that each node visited on the way to a root node may as well be attached directly to 
+ the root node; they all share the same representative. To effect this, as Find recursively traverses up the tree, it changes each node's parent reference to point 
+ to the root that it found, The resulting tree is much flatter, speeding up future operations not only on these elements but on those referencing them.
+ 
+```
+ function Find(x)
+     if x.parent != x
+        x.parent := Find(x.parent)
+     return x.parent
+```
+With these two techniques the amortized time per operation is only  O(a(n)), where O(a(n)) is the inverse of the function 
+n=f(x)=A(x,x) and A is the extremely fast-growing Ackermann function, Thus, the amortized running time per operation is effectively a small constant.. 
+
+
+#### Disjoint set Forests 
+- Disjoint-set forests are data structures where each set is represented by a tree data structure, in which each node holds a reference to its parent 
+  node (see parent pointer tree).
+  
 
 #### Minimum spanning forest 
 If a graph is not connected, we can adapt our algorithms to compute the MSTs of each of its connected components known
