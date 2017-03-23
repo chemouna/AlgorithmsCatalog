@@ -421,10 +421,17 @@ while A does not form a spanning tree
     A = A union {(u, v)}
 return A
 ```
+Kruskal and Prim differ in the way they choose a safe edge : 
+In Kruskal’s algorithm, the set A is a forest whose vertices are all those of the given graph. The safe edge added to A 
+is always a least-weight edge in the graph that connects two distinct components. In Prim’s algorithm, the
+set A forms a single tree. The safe edge added to A is always a least-weight edge connecting the tree to a vertex not in the tree. 
 
 #### Prim’s algorithm 
 
 #### Kruskal’s algorithm 
+* Kruskal’s algorithm finds a safe edge to add to the growing forest by finding, of all the edges that connect any two trees in the 
+  forest, an edge (u, v) of least weight. 
+
 * finds an edge of the least possible weight that connects any two trees in the forest. It is a greedy algorithm in graph
 theory as it finds a minimum spanning tree for a connected weighted graph adding increasing cost arcs at each step. 
 It finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in 
@@ -436,16 +443,33 @@ KRUSKAL(G):
   A = ∅
   foreach v ∈ G.V:
      MAKE-SET(v)
+  sort the edges of G:E into nondecreasing order by weight w
   foreach (u, v) in G.E ordered by weight(u, v), increasing:
      if FIND-SET(u) ≠ FIND-SET(v):
         A = A ∪ {(u, v)}
         UNION(u, v)
- return A   
+ return A
 ```
+* This implementation uses a disjoint-set data structure to maintain several disjoint sets of elements. Each set contains 
+  the vertices in one tree of the current forest. The operation FIND-SET(u) returns a representative element
+  from the set that contains u. Thus, we can determine whether two vertices u and v belong to the same tree by testing 
+  whether FIND-SET(u) equals FIND-SET(v).  
 
 * With Kruskal’s algorithm and Prim’s algorithm, we can easily make each of them run in time O(E lgV), using ordinary binary heaps. 
   By using Fibonacci heaps, Prim’s algorithm runs in time O(E + V lg V), which improves over the binary-heap implementation 
   if |V| is much smaller than |E|. 
+
+### Union find data structure 
+ The union–find data type (disjoint-sets data type). It supports the union and find operations,
+ along with a connected operation for determining whether  two sites are in the same component and a count
+ operation that returns the total number of components. 
+ 
+ - many applications for union-find data structur:
+     - Friends in a social network
+     - Pixels in a digital photo
+     - Computers in a network
+     ....
+
 
 #### Minimum spanning forest 
 If a graph is not connected, we can adapt our algorithms to compute the MSTs of each of its connected components known
