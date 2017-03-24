@@ -533,6 +533,7 @@ as a minimum spanning forest.
 * The usual algorithms for topological sorting have running time linear in the number of nodes plus the number of edges, asymptotically,  
 
 ##### Kahn's algorithm 
+The idea of  Kahn’s algorithm is to repeatedly remove nodes that have zero in-degree. 
 
 ```
 L ← Empty list that will contain the sorted elements
@@ -549,6 +550,7 @@ if graph has edges then
 else 
     return L (a topologically sorted order)
 ```
+Time complexity is O(|V| + |E|) and space complexiy is O(|V|)
 
 #### Topological sorting based on DFS 
 loops through each node of the graph, in an arbitrary order, initiating a depth-first search that terminates when it hits any node that has already been visited 
