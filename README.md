@@ -419,7 +419,7 @@ A = Empty
 while A does not form a spanning tree
     find an edge (u, v) that is safe for A
     A = A union {(u, v)}
-return A
+return Ab
 ```
 Kruskal and Prim differ in the way they choose a safe edge : 
 In Kruskal’s algorithm, the set A is a forest whose vertices are all those of the given graph. The safe edge added to A 
@@ -898,28 +898,74 @@ else
 ### Coffman–Graham algorithm
  
 ## Dynamic programming 
+* A DP is an algorithmic technique which is usually based on a recurrent formula and one (or some) starting states. 
+A sub-solution of the problem is constructed from previously found ones. DP solutions have a polynomial complexity 
+which assures a much faster running time than other techniques like backtracking, brute-force etc. 
+
+* First step of DP is to find a state for which an optimal solution is found and with the help of which we can find the optimal solution for the next state. 
+   where a state is a way to describe a situation, a sub-solution for the problem 
 
 
 ### Longest increasing subsequence
 
 ### Longest common subsequence problem
+An elegant recursive approach to solving this problem is based around the observation that the LCS of two sequences can be built from the LCSes of 
+prefixes of these sequences.In algorithm speak, the longest common subsequence problem has optimal substructure.
 
+LCS in DP:
+```
+def lcs(x, y):
+    n = len(x)
+    m = len(y)
+    table = dict()  # a hashtable, but we'll use it as a 2D array here
+ 
+    for i in range(n+1):     # i=0,1,...,n
+        for j in range(m+1):  # j=0,1,...,m
+            if i == 0 or j == 0:
+                table[i, j] = 0
+            elif x[i-1] == y[j-1]:
+                table[i, j] = table[i-1, j-1] + 1
+            else:
+                table[i, j] = max(table[i-1, j], table[i, j-1])
+ 
+    # Now, table[n, m] is the length of LCS of x and y.
+ 
+    # Let's go one step further and reconstruct
+    # the actual sequence from DP table:
+ 
+    def recon(i, j):
+        if i == 0 or j == 0:
+            return []
+        elif x[i-1] == y[j-1]:
+            return recon(i-1, j-1) + [x[i-1]]
+        elif table[i-1, j] > table[i, j-1]: #index out of bounds bug here: what if the first elements in the sequences aren't equal
+            return recon(i-1, j)
+        else:
+            return recon(i, j-1)
+ 
+    return recon(n, m)
+```
 
-```
-function LCSLength(X[1..m], Y[1..n])
-    C = array(0..m, 0..n)
-    for i := 0..m
-       C[i,0] = 0
-    for j := 0..n
-       C[0,j] = 0
-    for i := 1..m
-        for j := 1..n
-            if X[i] = Y[j]
-                C[i,j] := C[i-1,j-1] + 1
-            else
-                C[i,j] := max(C[i,j-1], C[i-1,j])
-    return C[m,n]
-```
+### String Edit Distance
+
+### Matrix Chain Multiplicatio
+an optimization problem that can be solved using dynamic programming. Given a sequence of matrices, the goal is to find the most efficient way to multiply these matrices. 
+The problem is not actually to perform the multiplications, but merely to decide the sequence of the matrix multiplications involved.
+
+We can find the minimum cost using the following recursive algorithm:
+- Take the sequence of matrices and separate it into two subsequences.
+- Find the minimum cost of multiplying out each subsequence.
+- Add these costs together, and add in the cost of multiplying the two result matrices.
+- Do this for each possible position at which the sequence of matrices can be split, and take the minimum over all of them.
+
+* One simple solution is called memoization: each time we compute the minimum cost needed to multiply out a specific subsequence, we save it.
+  If we are ever asked to compute it again, we simply give the saved answer, and do not recompute it. Since there are about n2/2 different subsequences, 
+  where n is the number of matrices, the space required to do this is reasonable. It can be shown that this simple trick brings the runtime down to 
+  O(n^3) from O(2^n), which is more than efficient enough for real applications. 
+
+* There are algorithms that are more efficient than the O(n3) dynamic programming algorithm, though they are more complex.
+  An algorithm published by Hu and Shing achieves O(n log n) complexity. They showed how the matrix chain multiplication problem can be transformed (or reduced) 
+  into the problem of triangulation of a regular polygon.
 
 ## Computational Geometry Algorithms 
 
