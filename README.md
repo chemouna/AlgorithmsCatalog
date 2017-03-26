@@ -931,6 +931,13 @@ which assures a much faster running time than other techniques like backtracking
   an O(n^2) running time.
   Matrix-chain multiplication had O(n^2) subproblems overall, and in each we had at most n - 1 choices, giving an O(n^3) running time.
 
+* an in gradiant that an optimization problem must have for dynamic programming to apply is that the space of subproblems must be “small” in the sense
+  that a recursive algorithm for the problem solves the same subproblems over and  over, rather than always generating new subproblems. Typically, 
+  the total number of distinct subproblems is a polynomial in the input size. When a recursive algorithm revisits the same problem repeatedly, 
+  we say that the optimization problem has overlapping subproblems.
+
+* Whenever a recursion tree for the natural recursive solution to a problem contains the same subproblem repeatedly, and the total number of distinct subproblems
+
 ### Longest increasing subsequence
 
 ### Longest common subsequence problem
