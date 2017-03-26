@@ -999,6 +999,13 @@ We can find the minimum cost using the following recursive algorithm:
   An algorithm published by Hu and Shing achieves O(n log n) complexity. They showed how the matrix chain multiplication problem can be transformed (or reduced) 
   into the problem of triangulation of a regular polygon.
 
+### Egg Dropping 
+refers to a class of problems in which it is important to find the correct response without exceeding a (low) number of certain failure states. 
+In a toy example, there is a tower of  floors, and an egg dropper with  ideal eggs. The physical properties of the ideal egg is such that it will shatter 
+if it is dropped from floor  or above, and will have no damage whatsoever if it is dropped from floor  or below. The problem is to find a strategy such that 
+the egg dropper can determine the floor  in as few egg drops as possible. This problem has many applications in the real world such as avoiding a call out to 
+the slow HDD, or attempting to minimize cache misses, or running a large number of expensive queries on a database.
+
 
 ## Computational Geometry Algorithms 
 
