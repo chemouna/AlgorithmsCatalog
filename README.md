@@ -903,8 +903,33 @@ A sub-solution of the problem is constructed from previously found ones. DP solu
 which assures a much faster running time than other techniques like backtracking, brute-force etc. 
 
 * First step of DP is to find a state for which an optimal solution is found and with the help of which we can find the optimal solution for the next state. 
-   where a state is a way to describe a situation, a sub-solution for the problem 
+  where a state is a way to describe a situation, a sub-solution for the problem 
+  Whenever a problem exhibits optimal substructure, we have a good clue that dynamic programming might apply, Consequently, we must take care to ensure that 
+  the range of subproblems we consider includes those used in an optimal solution
 
+* You will find yourself following a common pattern in discovering optimal substructure:
+    1. You show that a solution to the problem consists of making a choice, such as choosing an initial cut in a rod or choosing an index at which to split 
+       the matrix chain. Making this choice leaves one or more subproblems to be solved.
+    2. You suppose that for a given problem, you are given the choice that leads to an optimal solution. You do not concern yourself yet with how to determine 
+       this choice. You just assume that it has been given to you.
+    3. Given this choice, you determine which subproblems ensue and how to best characterize the resulting space of subproblems.
+    4. You show that the solutions to the subproblems used within an optimal solution to the problem must themselves be optimal 
+     
+*  Optimal substructure varies across problem domains in two ways:
+    1. how many subproblems an optimal solution to the original problem uses, and
+    2. how many choices we have in determining which subproblem(s) to use in an optimal solution. 
+
+* for example In the rod-cutting problem, an optimal solution for cutting up a rod of size n uses just one subproblem (of size n - i ), but we must consider 
+  n choices for i in order to determine which one yields an optimal solution. 
+  Matrix-chain multiplication for the subchain A(i) A(i+1) ... A(j) serves as an example with two subproblems and j - i choices. For a given matrix 
+  A(k) at which we split the product, we have two subproblems—parenthesizing A(i) A(i+1) .... A(k) and parenthesizing A(k+1) A(k+2) .... A(j) 
+  and we must solve both of them optimally. Once we determine the optimal solutions to subproblems, we choose from among j - i candidates for
+  the index k.
+
+* the running time of a dynamic-programming algorithm depends on the product of two factors: the number of subproblems overall and how many
+  choices we look at for each subproblem. In rod cutting, we had ‚.n/ subproblems overall, and at most n choices to examine for each, yielding 
+  an O(n^2) running time.
+  Matrix-chain multiplication had O(n^2) subproblems overall, and in each we had at most n - 1 choices, giving an O(n^3) running time.
 
 ### Longest increasing subsequence
 
@@ -966,6 +991,7 @@ We can find the minimum cost using the following recursive algorithm:
 * There are algorithms that are more efficient than the O(n3) dynamic programming algorithm, though they are more complex.
   An algorithm published by Hu and Shing achieves O(n log n) complexity. They showed how the matrix chain multiplication problem can be transformed (or reduced) 
   into the problem of triangulation of a regular polygon.
+
 
 ## Computational Geometry Algorithms 
 
