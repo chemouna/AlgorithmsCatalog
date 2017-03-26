@@ -996,6 +996,7 @@ We can find the minimum cost using the following recursive algorithm:
   O(n^3) from O(2^n), which is more than efficient enough for real applications. 
 
 * There are algorithms that are more efficient than the O(n3) dynamic programming algorithm, though they are more complex.
+
   An algorithm published by Hu and Shing achieves O(n log n) complexity. They showed how the matrix chain multiplication problem can be transformed (or reduced) 
   into the problem of triangulation of a regular polygon.
 
@@ -1005,6 +1006,39 @@ In a toy example, there is a tower of  floors, and an egg dropper with  ideal eg
 if it is dropped from floor  or above, and will have no damage whatsoever if it is dropped from floor  or below. The problem is to find a strategy such that 
 the egg dropper can determine the floor  in as few egg drops as possible. This problem has many applications in the real world such as avoiding a call out to 
 the slow HDD, or attempting to minimize cache misses, or running a large number of expensive queries on a database.
+
+* To derive a dynamic programming functional equation for this puzzle, let the state of the dynamic programming model be a pair s = (n,k), where
+  n = number of test eggs available, n = 0, 1, 2, 3, ..., N − 1.
+  k = number of (consecutive) floors yet to be tested, k = 0, 1, 2, ..., H − 1.
+  For instance, s = (2,6) indicates that two test eggs are available and 6 (consecutive) floors are yet to be tested. 
+
+*  let W(n,k) = minimum number of trials required to identify the value of the critical floor under the worst-case scenario given that the process is in state s = (n,k).
+   Then it can be shown that : 
+   W(n,k) = 1 + min { max (W(n − 1, x − 1), W(n,k − x)): x = 1, 2, ..., k }
+   with W(n,0) = 0 for all n > 0 and W(1,k) = k for all k. It is easy to solve this equation iteratively by systematically increasing the values of n and k.
+
+    the above solution takes {\displaystyle O(nk^{2})} O(nk^{2}) time with a DP solution. This can be improved to  O(nk log k) time by binary searching 
+    on the optimal  x in the above recurrence,  W(n-1,x-1) is increasing in x while W(n,k-x) is decreasing in x, thus a local minimum of 
+    max( W(n-1, x-1), W(n, k-x)) is a global minimum. by storing the optimal x for each cell in the DP table and referring to its value for the 
+    previous cell, the optimal x for each cell can be found in constant time, improving it to O(nk) time.
+
+Pseudo code for the solution:
+```
+def drops(n,h):
+    if(n == 1 or k == 0 or k == 1):
+        return k
+    end if
+
+    minimum = ∞
+
+    for x = 1 to h:
+        minimum = min(minimum, 
+                      1 + max(drops(n - 1, h - 1), drops(n, h - x))
+                      )
+    end for
+
+    return minimum
+```
 
 
 ## Computational Geometry Algorithms 
