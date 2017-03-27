@@ -265,6 +265,48 @@ This is very often a problem with pseudo-polynomial time algorithms.
   So putting the principle that "everything has to be prime" is a sufficient but not a necessary condition for good distribution over hashtables. It allows everybody to 
   interoperate without needing to assume that the others have followed the same rule. 
   
+### Open addressing 
+is a method of collision resolution in hash tables. With this method a hash collision is resolved by probing, or searching through alternate locations 
+in the array (the probe sequence) until either the target record is found, or an unused array slot is found, which indicates that there is no such key in the table
+Examples probe sequences: Double Hashing, Linear probing, Quadratic probing 
+
+* has the best cache performance but is most sensitive to clustering, while double hashing has poor cache performance but exhibits virtually no clustering; 
+  quadratic probing falls in-between in both areas. Double hashing can also require more computation than other forms of probing 
+
+* the load factor increases towards 100%, the number of probes that may be required to find or insert a given key rises dramatically. Once the table becomes 
+  full, probing algorithms may even fail to terminate. 
+
+```
+ record pair { key, value }
+ var pair array slot[0..num_slots-1]
+
+function find_slot(key)
+     i := hash(key) modulo num_slots
+     // search until we either find the key, or find an empty slot.
+     while (slot[i] is occupied) and ( slot[i].key ≠ key )
+         i = (i + 1) modulo num_slots
+     return i
+
+function lookup(key)
+     i := find_slot(key)
+     if slot[i] is occupied   // key is in table
+         return slot[i].value
+     else                     // key is not in table
+         return not found
+
+function set(key, value)
+     i := find_slot(key)
+     if slot[i] is occupied   // we found our key
+         slot[i].value = value
+         return
+     if the table is almost full
+         rebuild the table larger 
+         i = find_slot(key)
+     slot[i].key   = key
+     slot[i].value = value
+```
+
+#### Linear Probing 
 
 ### Modular Hashing 
 
