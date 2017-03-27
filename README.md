@@ -265,9 +265,36 @@ This is very often a problem with pseudo-polynomial time algorithms.
   So putting the principle that "everything has to be prime" is a sufficient but not a necessary condition for good distribution over hashtables. It allows everybody to 
   interoperate without needing to assume that the others have followed the same rule. 
   
-### Open addressing 
+### Collision resolution
+
+#### Separate chaining with linked lists 
+* Chained hash tables with linked lists are popular because they require only basic data structures with simple algorithms, and can use 
+  simple hash functions that are unsuitable for other methods.
+
+* More sophisticated data structures, such as balanced search trees, are worth considering only if the load factor is large (about 10 or more), 
+  or if the hash distribution is likely to be very non-uniform, or if one must guarantee good performance even in a worst-case scenario. However,
+  using a larger table and/or a better hash function may be even more effective in those cases. 
+
+* Chained hash tables also inherit the disadvantages of linked lists. When storing small keys and values, the space overhead of the next pointer 
+  in each entry record can be significant. An additional disadvantage is that traversing a linked list has poor cache performance, making the 
+  processor cache ineffective. 
+
+#### Separate chaining with other structures
+* Instead of a list, one can use any other data structure that supports the required operations. For example, by using a self-balancing 
+  binary search tree, the theoretical worst-case time of common hash table operations (insertion, deletion, lookup) can be brought down 
+  to O(log n) rather than O(n). However, this introduces extra complexity into the implementation, and may cause even worse performance 
+  for smaller hash tables, where the time spent inserting into and balancing the tree is greater than the time needed to perform a linear 
+  search on all of the elements of a list.
+
+#### Open addressing 
 is a method of collision resolution in hash tables. With this method a hash collision is resolved by probing, or searching through alternate locations 
 in the array (the probe sequence) until either the target record is found, or an unused array slot is found, which indicates that there is no such key in the table
+
+* In another strategy, called open addressing, all entry records are stored in the bucket array itself. When a new entry has to be inserted, 
+  the buckets are examined, starting with the hashed-to slot and proceeding in some probe sequence, until an unoccupied slot is found. When 
+  searching for an entry, the buckets are scanned in the same sequence, until either the target record is found, or an unused array slot is 
+  found, which indicates that there is no such key in the table.
+
 Examples probe sequences: Double Hashing, Linear probing, Quadratic probing 
 
 * has the best cache performance but is most sensitive to clustering, while double hashing has poor cache performance but exhibits virtually no clustering; 
@@ -306,8 +333,86 @@ function set(key, value)
      slot[i].key   = key
      slot[i].value = value
 ```
+ 
+Linear Probiling, quadratic probing and double hashing are a form of open addressing.
 
-#### Linear Probing 
+##### Linear Probing 
+Linear probing is a scheme in computer programming for resolving collisions in hash tables, data structures for maintaining a collection 
+of key–value pairs and looking up the value associated with a given key.
+
+* Linear probing provides good locality of reference, which causes it to require few uncached memory accesses per operation. 
+  Because of this, for low to moderate load factors, it can provide very high performance. However, compared to some other open 
+  addressing strategies, its performance degrades more quickly at high load factors because of primary clustering, a tendency for 
+  one collision to cause more nearby collisions
+
+* Using linear probing, dictionary operations can be implemented in constant expected time. In other words, insert, remove and search 
+  operations can be implemented in O(1), as long as the load factor of the hash table is a constant strictly less than one. 
+
+* linear probing searches the table for the closest following free location and inserts the new key there. Lookups are performed in the same way, 
+  by searching the table sequentially starting at the position given by the hash function, until finding a cell with a matching key or an empty cell. 
+
+* Search: To search for a given key x, the cells of T are examined, beginning with the cell at index h(x) (where h is the hash function) 
+  and continuing to the adjacent cells h(x) + 1, h(x) + 2, ..., until finding either an empty cell or a cell whose stored key is x. If a 
+  cell containing the key is found, the search returns the value from that cell. Otherwise, if an empty cell is found, the key cannot be 
+  in the table 
+
+* Insertion: To insert a key–value pair (x,v) into the table (possibly replacing any existing pair with the same key),  follows the same sequence 
+  of cells that would be followed for a search, until finding either an empty cell or a cell whose stored key is x. The new key–value pair is then 
+  placed into that cell.
+  If the insertion would cause the load factor of the table (its fraction of occupied cells) to grow above some preset threshold, 
+  the whole table may be replaced by a new table, larger by a constant factor, with a new hash function. Setting this threshold close 
+  to zero and using a high growth rate for the table size leads to faster hash table operations but greater memory usage than threshold 
+  values close to one and low growth rates. 
+  A common choice would be to double the table size when the load factor would exceed 1/2, causing the load factor to stay between 1/4 and 1/2. 
+
+* Because linear probing is especially sensitive to unevenly distributed hash values,[7] it is important to combine it with a high-quality 
+  hash function that does not produce such irregularities. 
+
+###### Primary clustering
+* One of two major failure modes of open addressing based hash tables, especially those using linear probing. It occurs after a hash 
+  collision causes two   of the records in the hash table to hash to the same position, and causes one of the records to be moved to 
+  the next location in its probe sequence.
+
+* Primary Clustering is the tendency for a collision resolution scheme such as linear probing to create long runs of filled slots 
+  near the hash position  of keys.
+  If the primary hash index is x, subsequent probes go to x+1, x+2, x+3 and so on, this results in Primary Clustering.
+  Once the primary cluster forms, the bigger the cluster gets, the faster it grows. And it reduces the performance. 
+
+###### Secondary clustering, 
+* Secondary Clustering is the tendency for a collision resolution scheme such as quadratic probing to create long runs of filled slots 
+  away from the hash position of keys.
+  If the primary hash index is x, probes go to x+1, x+4, x+9, x+16, x+25 and so on, this results in Secondary Clustering.
+  Secondary clustering is less severe in terms of performance hit than primary clustering, and is an attempt to keep clusters from forming 
+  by using Quadratic Probing. The idea is to probe more widely separated cells, instead of those adjacent to the primary hash site.
+
+* Both types of clustering may be reduced by using a higher-quality hash function, or by using a hashing method such as double hashing that 
+  is less susceptible to clustering 
+
+###### Examples
+* Java's HashTable: 
+Hash tables deal with collisions in one of two ways.
+1/ By having each bucket contain a linked list of elements that are hashed to that bucket. This is why a bad hash function can make 
+   lookups in hash tables very slow.
+
+2/ If the hash table entries are all full then the hash table can increase the number of buckets that it has and then redistribute all 
+   the elements in the table. The hash function returns an integer and the hash table has to take the result of the hash function and 
+   mod it against the size of the table that way it can be sure it will get to bucket. so by increasing the size it will rehash and run 
+   the modulo calculations which if you are lucky might send the objects to different buckets. 
+
+* The internal array of HashMap is of fixed size, and if you keep storing objects, at some point of time hash function will return same bucket 
+  location for two different keys
+  If we try to retrieve an object from this linked list, we need an extra check to search correct value, this is done by equals() method. 
+  Since each node contains an entry, HashMap keeps comparing entry's key object with the passed key using equals() and when it return true, 
+  Map returns the corresponding value.
+
+* there is a potential race condition exists while resizing HashMap in Java, if two thread at the same time found that now HashMap needs 
+  resizing and they both try to resizing. on the process of resizing of HashMap in Java, the element in the bucket which is stored in linked list 
+  get reversed in order during their migration to new bucket because Java HashMap  doesn't append the new element at tail instead it append new 
+  element at the head to avoid tail traversing. If race condition happens then you will end up with an infinite loop.
+
+##### Cuckoo hashing 
+
+##### Robin Hood hashing
 
 ### Modular Hashing 
 
