@@ -34,7 +34,6 @@ The search space is initially the entire sequence. At each step, the algorithm c
 Based on the comparison and because the sequence is sorted, it can then eliminate half of the search space. By doing this repeatedly, it will eventually 
 be left with a search space consisting of a single element, the target value.
 
-
 #### Pseudo code 
 Given an array A of n elements with values or records A0 ... An−1, sorted such that A0 ≤ ... ≤ An−1, 
 and target value T, find the index of T in A.
@@ -60,6 +59,13 @@ binary_search(A, target):
             
    // target was not found
 ```
+
+#### Discrete binary search
+A sequence (array) is really just a function which associates integers (indices) with the corresponding values. However, there is no reason to restrict our usage of 
+binary search to tangible sequences. In fact, we can use the same algorithm described above on any monotonic function f whose domain is the set of integers. 
+The only difference is that we replace an array lookup with a function evaluation: we are now looking for some x such that f(x) is equal to the target value. 
+The search space is now moreformally a subinterval of the domain of the function, while the target value is an element of the codomain. 
+
 
 #### Common errors 
 
