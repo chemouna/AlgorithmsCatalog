@@ -29,6 +29,12 @@ Note: This is still very much in progress and not polished at all yet.
 ## Search Algorithms
 
 ### Binary Search
+Binary search is used to quickly find a value in a sorted sequence (consider a sequence an ordinary array for now). 
+The search space is initially the entire sequence. At each step, the algorithm compares the median value in the search space to the target value. 
+Based on the comparison and because the sequence is sorted, it can then eliminate half of the search space. By doing this repeatedly, it will eventually 
+be left with a search space consisting of a single element, the target value.
+
+
 #### Pseudo code 
 Given an array A of n elements with values or records A0 ... An−1, sorted such that A0 ≤ ... ≤ An−1, 
 and target value T, find the index of T in A.
@@ -39,6 +45,21 @@ and target value T, find the index of T in A.
 4/ If Am < T, set L to m + 1 and go to step 2.
 5/ If Am > T, set R to m – 1 and go to step 2.
 6/ Now Am = T, the search is done; return m.
+
+```
+binary_search(A, target):
+   lo = 1, hi = size(A)
+   while lo <= hi:
+      mid = lo + (hi-lo)/2
+      if A[mid] == target:
+         return mid
+      else if A[mid] < target: 
+         lo = mid+1
+      else:
+         hi = mid-1
+            
+   // target was not found
+```
 
 #### Common errors 
 
