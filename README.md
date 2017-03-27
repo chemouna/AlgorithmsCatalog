@@ -291,7 +291,8 @@ function lookup(key)
      i := find_slot(key)
      if slot[i] is occupied   // key is in table
          return slot[i].value
-     else                     // key is not in table
+     else                     // key is not 
+     in table
          return not found
 
 function set(key, value)
@@ -1082,6 +1083,13 @@ def drops(n,h):
     return minimum
 ```
 
+### Optimal binary search tree
+ * an optimal binary search tree, sometimes called a weight-balanced binary tree, is a binary search tree which provides the smallest 
+ possible search time for a given sequence of accesses (or access probabilities). Optimal BSTs are generally divided into 
+ two types: static and dynamic. 
+ - In the static optimality problem, the tree cannot be modified after it has been constructed. In this case, there exists some particular 
+   layout of the nodes of the tree which provides the smallest expected search time for the given access probabilities.
+ - In the dynamic optimality problem, the tree can be modified at any time, typically by permitting tree rotations.
 
 ## Computational Geometry Algorithms 
 
@@ -1247,6 +1255,10 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 
 #### Application-specific trees 
 
+#### Splay Tree 
+
+#### Tango tree
+ 
 ### Hashes
 
 ### Graphs 
