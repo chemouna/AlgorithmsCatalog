@@ -66,6 +66,33 @@ binary search to tangible sequences. In fact, we can use the same algorithm desc
 The only difference is that we replace an array lookup with a function evaluation: we are now looking for some x such that f(x) is equal to the target value. 
 The search space is now moreformally a subinterval of the domain of the function, while the target value is an element of the codomain. 
 
+* We can use binary search to find the smallest legal solution, i.e. the smallest x for which p(x) is true. The first part of devising a solution based on 
+  binary search is designing a predicate which can be evaluated and for which it makes sense to use binary search: we need to choose what the algorithm 
+  should find. We can have it find either the first x for which p(x) is true or the last x for which p(x) is false. 
+
+* One important thing to remember before beginning to code is to settle on what the two numbers you maintain (lower and upper bound) mean. A likely answer is a 
+  closed interval which surely contains the first x for which p(x) is true. All of your code should then be directed at maintaining this invariant: it tells 
+  you how to properly move the bounds, which is where a bug can easily find its way in your code, if you’re not careful.
+
+* Advice : helpful advice can be given here other than to always double- and triple-check your bounds! Also, since execution time increases logarithmically 
+  with the bounds, you can always set them higher, as long as it doesn’t break the evaluation of the predicate. Keep your eye out for overflow errors all around, 
+  especially in calculating the median.
+
+```
+binary_search(lo, hi, p):
+   while lo < hi:
+      mid = lo + (hi-lo)/2
+      if p(mid) == true:
+         hi = mid
+      else:
+         lo = mid+1
+          
+   if p(lo) == false:
+      complain                // p(x) is false for all x in S!
+      
+   return lo         // lo is the least x for which p(x) is true
+```
+
 
 #### Common errors 
 
