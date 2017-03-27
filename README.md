@@ -1084,12 +1084,28 @@ def drops(n,h):
 ```
 
 ### Optimal binary search tree
- * an optimal binary search tree, sometimes called a weight-balanced binary tree, is a binary search tree which provides the smallest 
+* An optimal binary search tree, sometimes called a weight-balanced binary tree, is a binary search tree which provides the smallest 
  possible search time for a given sequence of accesses (or access probabilities). Optimal BSTs are generally divided into 
  two types: static and dynamic. 
  - In the static optimality problem, the tree cannot be modified after it has been constructed. In this case, there exists some particular 
    layout of the nodes of the tree which provides the smallest expected search time for the given access probabilities.
  - In the dynamic optimality problem, the tree can be modified at any time, typically by permitting tree rotations.
+
+* c(i,j) represents the expected cost of searching an optimal binary search tree containing the keys ki, ..., kj. w(i,j) represents 
+  the probability sum of the subtree containing the keys ki, ..., kj. For the formula：
+```
+c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
+```
+```c(i,k-1)+w(i,k-1)```` reresents the cost for the left subtree if we choose key k as the root. c(k,j) + w(k,j) represents the cost for the
+   right subtree. p(k) represents the cost for the root k.
+
+   If we choose key k as the root, then the left subtree contains the keys ki, ..., k(k-1) and the right subtree contains the kyes k(k+1), ..., kj. 
+   But we can not simply say that:
+   ```
+   c(i,j)=min (i < k <= j) {c(i, k-1) + c(k, j) + p(k)}
+   ```
+   Because when we choose the key k for the root, the generated subtrees has their depth added by 1. So c(i,k-1)+w(i,k-1) will be the right cost 
+   for the left subtree! 
 
 ## Computational Geometry Algorithms 
 
