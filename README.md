@@ -77,14 +77,27 @@ The search space is now moreformally a subinterval of the domain of the function
 * Advice : helpful advice can be given here other than to always double- and triple-check your bounds! Also, since execution time increases logarithmically 
   with the bounds, you can always set them higher, as long as it doesn’t break the evaluation of the predicate. Keep your eye out for overflow errors all around, 
   especially in calculating the median.
+  And remember to always test your code on a two-element set where the predicate is false for the first element and true for the second.
 
+* When you encounter a problem which you think could be solved by applying binary search, you need some way of proving it will work. 
+  So consider a predicate p defined over some ordered set S (the search space). The search space consists of candidate solutions to the problem. 
+   binary search can be used if and only if for all x in S, p(x) implies p(y) for all y > x. This property is what we use when we discard the second half of the search space. 
+   It is equivalent to saying that ¬p(x) implies ¬p(y) for all y < x (the symbol ¬ denotes the   logical not operator), which is what we use when we discard the first half of the search space. 
+   binary search can also be used when a predicate yields a series of yes answers followed by a series of no answers. 
+   we can use binary search to find the smallest legal solution, i.e. the smallest x for which p(x) is true. The first part of devising a solution based on binary search is designing a predicate 
+   which can be evaluated and for which it makes sense to use binary search: we need to choose what the algorithm should find. We can have it find either the first x for which p(x) is true or the last x for which p(x) is false
+   
+   
+   
 ```
 binary_search(lo, hi, p):
    while lo < hi:
       mid = lo + (hi-lo)/2
-      if p(mid) == true:
+      if p(mid) == true: // When p(mid) is true, we can discard the second half of the search space, 
+                         // since the predicate is true for all elements in it (by the main theorem). 
          hi = mid
-      else:
+      else:    // we can discard the first half of the search space, but this time including mid. p(mid) is false 
+              //so we don’t need it in our search space. 
          lo = mid+1
           
    if p(lo) == false:
@@ -92,6 +105,11 @@ binary_search(lo, hi, p):
       
    return lo         // lo is the least x for which p(x) is true
 ```
+
+using mid = lo + (hi-lo)/2 instead of the usual mid = (lo+hi)/2. This is to avoid another potential rounding bug: in the first case, 
+we want the division to always round down, towards the lower bound. But division truncates, so when lo+hi would be negative, it would 
+start rounding towards the higher bound. Coding the calculation this way ensures that the number divided is always positive and hence 
+always rounds as we want it to. 
 
 
 #### Common errors 
