@@ -111,6 +111,8 @@ we want the division to always round down, towards the lower bound. But division
 start rounding towards the higher bound. Coding the calculation this way ensures that the number divided is always positive and hence 
 always rounds as we want it to. 
 
+* we may use a greedy algorithm to evaluate the predicate (like in FairWorkLoad problem from topcoder). In other problems, evaluating the predicate can come 
+  down to anything from a simple math expression to finding a maximum cardinality matching in a bipartite graph. 
 
 #### Common errors 
 
