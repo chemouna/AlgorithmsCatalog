@@ -26,8 +26,28 @@ Note: This is still very much in progress and not polished at all yet.
 ## Finding repeated Elements 
 * [Paper on Finding Repeated Elements by David Gries and J. Misra](http://www.cs.utexas.edu/users/misra/scannedPdf.dir/FindRepeatedElements.pdf)
 
+## Recursion 
+
+
+## Divide and Conquer
+
+
 ## Search Algorithms
 
+## Finding Median 
+
+### By insertion sort
+
+### By Self balancing BST
+
+### Heaps 
+* Similar to balancing BST in Method 2 above, we can use a max heap on left side to represent elements that are less than effective median, and a min heap on right side to represent 
+  elements that are greater than effective median. 
+
+* After processing an incoming element, the number of elements in heaps differ utmost by 1 element. When both heaps contain same number of elements, we pick average of heaps root 
+  data as effective median. When the heaps are not balanced, we select effective median from the root of heap containing more elements.
+
+ 
 ### Binary Search
 Binary search is used to quickly find a value in a sorted sequence (consider a sequence an ordinary array for now). 
 The search space is initially the entire sequence. At each step, the algorithm compares the median value in the search space to the target value. 
@@ -113,6 +133,8 @@ always rounds as we want it to.
 
 * we may use a greedy algorithm to evaluate the predicate (like in FairWorkLoad problem from topcoder). In other problems, evaluating the predicate can come 
   down to anything from a simple math expression to finding a maximum cardinality matching in a bipartite graph. 
+
+* Remember to verify that the lower and upper bounds are not overly constrained: it’s usually better to relax them as long as it doesn’t break the predicate 
 
 #### Common errors 
 
@@ -303,8 +325,21 @@ This is very often a problem with pseudo-polynomial time algorithms.
   counting sort. Only the final loop is different Since American Flag Sort is in-place, the value in a new output array 
   we need to swap instead in place
 
+### Sorting nearly sorted data
+Sorting nearly sorted data is common in practice :
+  - Insertion sort is the clear winner for nearly sorted data.
+  - Bubble sort is fast, but insertion sort has lower overhead.
+  - Shell sort is fast because it is based on insertion sort.
+  - Merge sort, heap sort, and quick sort do not adapt to nearly sorted data.
+  - Insertion sort provides a O(n2) worst case algorithm that adapts to O(n) time when the data is nearly sorted. 
+  - 
 
 ### External Sorting 
+can handle massive amounts of data. External sorting is required when the data being sorted do not fit into the main memory 
+of a computing device (usually RAM) and instead they must reside in the slower external memory (usually a hard drive). External 
+sorting typically uses a hybrid sort-merge strategy. In the sorting phase, chunks of data small enough to fit in main memory are 
+read, sorted, and written out to a temporary file. In the merge phase, the sorted subfiles are combined into a single larger file.
+
 
 ### In-Place RadixSort 
 
@@ -985,7 +1020,7 @@ Breadth-First-Search(Graph, root):
   If solutions are frequent but located deep in the tree, BFS could be impractical. If the search tree is very deep you will 
   need to restrict the search depth for depth first search (DFS)
 
-* DFS is typically used to traverse an entire graph, and takes time Θ(|V| + |E|),[4] linear in the size of the graph. 
+* DFS is typically used to traverse an entire graph, and takes time Θ(|V| + |E|) linear in the size of the graph. 
   it uses space O(|V|) in the worst case to store the stack of vertices on the current search path as well as the set 
   of already-visited vertices.
 
@@ -1202,7 +1237,7 @@ def lcs(x, y):
 
 ### String Edit Distance
 
-### Matrix Chain Multiplicatio
+### Matrix Chain Multiplication
 an optimization problem that can be solved using dynamic programming. Given a sequence of matrices, the goal is to find the most efficient way to multiply these matrices. 
 The problem is not actually to perform the multiplications, but merely to decide the sequence of the matrix multiplications involved.
 
@@ -1305,6 +1340,8 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
 #### Array
 
 #### Stack
+
+
 
 #### Bit Array
 
@@ -1443,6 +1480,11 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 ### Trees
 
 #### B-Trees 
+a B-tree is a self-balancing tree data structure that keeps data sorted and allows searches, sequential access, insertions, and deletions in logarithmic time. 
+The B-tree is a generalization of a binary search tree in that a node can have more than two children. Unlike self-balancing binary search trees, the B-tree 
+is optimized for systems that read and write large blocks of data. B-trees are a good example of a data structure for external memory. It is commonly used in 
+databases and filesystems.
+
 
 #### Multiway Trees 
 
@@ -1469,6 +1511,10 @@ Once that's done search for any n-gram and see if it is present in the indexed s
 #### Bucket Queue
 
 ### Others 
+
+#### Removing duplicates 
+* To remove duplicates while preserving order in Java use LinkedHashSet
+* 
 
 ## Algorithms that work by building an automata
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
