@@ -1510,6 +1510,15 @@ databases and filesystems.
 
 #### Bucket Queue
 
+## Time Complexity 
+
+### Polynomial time 
+* An algorithm runs in polynomial time if its running time is upper bounded by a polynomial expression in the size of the input for the algorithm, 
+  : T(n) = O(nk) for some constant k. 
+* The selection sort sorting algorithm on n integers performs A. n^2 operations for some constant A. Thus it runs in time O(n^2) and is a polynomial
+  time algorithm. 
+* Maximum matchings in graphs can be found in polynomial time.
+
 ### Others 
 
 #### Removing duplicates 
@@ -1519,7 +1528,6 @@ databases and filesystems.
 ## Algorithms that work by building an automata
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
 * Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
-
 
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
