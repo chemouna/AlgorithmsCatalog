@@ -1321,6 +1321,18 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
    Because when we choose the key k for the root, the generated subtrees has their depth added by 1. So c(i,k-1)+w(i,k-1) will be the right cost 
    for the left subtree! 
 
+### Line breaking / Text Justification 
+- The idea then is to come up with a configuration of line breaks which minimizes the total sum of such penalties, a strategy know as "minimum raggedness". 
+  A line exceeding the allowed width should incur an infinitely large penalty; otherwise the cost should follow a quickly growing function, such as the 
+  squared size of the gap. 
+
+- line breaking defined is a special case of the "least weight subsequence" problem. 
+- There is an optimum length for a line: lineopt, The penalty for a line being too short or too long ```= (length of current line – lineopt)^2```
+  with the exception : last line cannot be penalized for being too short.
+
+### The Least Weight Subsequence Problem
+
+
 ## Computational Geometry Algorithms 
 
 ### Closest pair of points problem
