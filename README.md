@@ -1195,6 +1195,17 @@ which assures a much faster running time than other techniques like backtracking
 
 * Whenever a recursion tree for the natural recursive solution to a problem contains the same subproblem repeatedly, and the total number of distinct subproblems
 
+## Greedy Algorithms 
+follows the problem solving heuristic of making the locally optimal choice at each stage[1] with the hope of finding a global optimum, In mathematical optimization, 
+greedy algorithms solve combinatorial problems having the properties of matroids. 
+
+greedy algorithms have five components:
+ - A candidate set, from which a solution is created
+ - A selection function, which chooses the best candidate to be added to the solution
+ - A feasibility function, that is used to determine if a candidate can be used to contribute to a solution
+ - An objective function, which assigns a value to a solution, or a partial solution, and
+ - A solution function, which will indicate when we have discovered a complete solution 
+
 ### Longest increasing subsequence
 
 ### Longest common subsequence problem
