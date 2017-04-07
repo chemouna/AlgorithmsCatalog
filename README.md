@@ -47,7 +47,7 @@ Note: This is still very much in progress and not polished at all yet.
 * After processing an incoming element, the number of elements in heaps differ utmost by 1 element. When both heaps contain same number of elements, we pick average of heaps root 
   data as effective median. When the heaps are not balanced, we select effective median from the root of heap containing more elements.
 
- 
+
 ### Binary Search
 Binary search is used to quickly find a value in a sorted sequence (consider a sequence an ordinary array for now). 
 The search space is initially the entire sequence. At each step, the algorithm compares the median value in the search space to the target value. 
@@ -1508,6 +1508,18 @@ The B-tree is a generalization of a binary search tree in that a node can have m
 is optimized for systems that read and write large blocks of data. B-trees are a good example of a data structure for external memory. It is commonly used in 
 databases and filesystems.
 
+#### BST 
+
+##### Usage 
+- To quickly inserting in a sorted list of values.
+  Consider using an array for this purpose. You have very fast access to read random values, but if you want to add a new value, 
+  you have to find the place in the array where it belongs, shift everything over, and then insert the new value.
+  With a binary search tree, you simply traverse the tree looking for where the value would be if it were in the tree already, 
+  and then add it there. 
+
+- It's easy to extend a Bst to efficiently record additional information or perform new operations. For example, one can record 
+  the number of nodes in each subtree having a certain property.
+
 
 #### Multiway Trees 
 
@@ -1551,6 +1563,9 @@ databases and filesystems.
 ## Algorithms that work by building an automata
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
 * Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
+
+## N-Way Merge
+
 
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
