@@ -1540,6 +1540,10 @@ databases and filesystems.
   2. Concatenate two ropes.
   3. Substring. Two search tree split operations.
   4. Iterate over each character. Left-to-right tree traversal. 
+- A rope is essentially a binary tree whose leaves are arrays characters, Concatenation of two ropes is just the creation 
+ of a new tree node with both ropes as children, So rope enables much faster concatenation than ordinary strings and don't require 
+ a large contiguous memory space to store a large string, the main disadventage is slower indexing.
+ 
 
 #### SkipList 
 
