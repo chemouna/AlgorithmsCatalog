@@ -1530,7 +1530,19 @@ databases and filesystems.
 #### Splay Tree 
 
 #### Tango tree
- 
+
+#### Rope data structure
+- a data structure composed of smaller strings that is used to efficiently store and manipulate a very long string 
+- Ropes can be viewed as search trees that are indexed by position. If each vertex contains the length of the string 
+  represented by the subtree, then minimal modifications of the search tree algorithms yields these operations on ropes:
+  1. Fetch ith character. A simple search tree look-up. Rather than examining the subtree containing the right key, we 
+     examine the tree containing the proper position, as determined by the length fields.
+  2. Concatenate two ropes.
+  3. Substring. Two search tree split operations.
+  4. Iterate over each character. Left-to-right tree traversal. 
+
+#### SkipList 
+
 ### Hashes
 
 ### Graphs 
