@@ -1544,8 +1544,25 @@ databases and filesystems.
  of a new tree node with both ropes as children, So rope enables much faster concatenation than ordinary strings and don't require 
  a large contiguous memory space to store a large string, the main disadventage is slower indexing.
  
+#### SkipList
+- Skip lists are a probabilistic data structure that seem likely to supplant balanced trees as the implementation method of choice 
+ for many applications. Skip list algorithms have the same asymptotic expected time bounds as balanced trees and are simpler, 
+ faster and use less space.
 
-#### SkipList 
+- a data structure that allows fast search within an ordered sequence of elements. Fast search is made possible by 
+  maintaining a linked hierarchy of subsequences, with each successive subsequence skipping over fewer elements than 
+  the previous one.
+- A skip list is built in layers. The bottom layer is an ordinary ordered linked list. Each higher layer acts as an
+  "express lane" for the lists below, where an element in layer i appears in layer i+1 with some fixed probability p 
+  (two commonly used values for p are 1/2 or 1/4). On average, each element appears in 1/(1-p) lists, and the tallest 
+  element (usually a special head element at the front of the skip list) in all the lists. 
+
+- Search: A search for a target element begins at the head element in the top list, and proceeds horizontally until 
+ the current element is greater than or equal to the target. If the current element is equal to the target, it has been found. 
+ If the current element is greater than the target, or the search reaches the end of the linked list, the procedure is repeated 
+ after returning to the previous element and dropping down vertically to the next lower list. 
+
+##### Indexable Skiplist 
 
 ### Hashes
 
