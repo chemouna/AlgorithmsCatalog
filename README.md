@@ -1520,6 +1520,24 @@ databases and filesystems.
 - It's easy to extend a Bst to efficiently record additional information or perform new operations. For example, one can record 
   the number of nodes in each subtree having a certain property.
 
+#### Self-balancing binary search tree
+ 
+##### AVL Tree 
+- is a self-balancing binary search tree in which the heights of the two child subtrees of any node differ by at most one; if at any time they differ by more 
+  than one, rebalancing is done to restore this property. Lookup, insertion, and deletion all take O(log n) time in both the average and worst cases, 
+  where n is the number of nodes in the tree prior to the operation.
+
+##### Red Black Tree
+- is a kind of self-balancing binary search tree. Each node of the binary tree has an extra bit, and that bit is often interpreted as the color (red or black) 
+  of the node. These color bits are used to ensure the tree remains approximately balanced during insertions and deletions. 
+
+##### 2-3 Tree
+
+##### Splay Tree 
+ 
+##### AA Tree
+
+-------
 
 #### Multiway Trees 
 
@@ -1527,7 +1545,6 @@ databases and filesystems.
 
 #### Application-specific trees 
 
-#### Splay Tree 
 
 #### Tango tree
 
@@ -1549,6 +1566,12 @@ databases and filesystems.
  for many applications. Skip list algorithms have the same asymptotic expected time bounds as balanced trees and are simpler, 
  faster and use less space.
 
+- Skip lists are a probabilistic alternative to balanced trees. Skip lists are balanced by consulting a random number generator.
+  Although skip lists have bad worst-case performance, no input sequence consistently produces the worst-case performance
+  (much like quicksort when the pivot element is chosen randomly). It is very unlikely a skip list data structure will
+  be significantly unbalanced (e.g., for a dictionary of more than 250 elements, the chance that a search will take more
+  than 3 times the expected time is less than one in a million). 
+
 - a data structure that allows fast search within an ordered sequence of elements. Fast search is made possible by 
   maintaining a linked hierarchy of subsequences, with each successive subsequence skipping over fewer elements than 
   the previous one.
@@ -1561,6 +1584,21 @@ databases and filesystems.
  the current element is greater than or equal to the target. If the current element is equal to the target, it has been found. 
  If the current element is greater than the target, or the search reaches the end of the linked list, the procedure is repeated 
  after returning to the previous element and dropping down vertically to the next lower list. 
+
+- Example usage :
+  - Skiplist is used in Redis to implement a "sorted set" data type. 
+  
+- Balanced treess (e.g., AVL trees [Knu73] [Wir76]) and selfadjusting trees can be used for the same problems as
+  skip lists. All three techniques have performance bounds of the same order.
+  
+- An intersting thing to do to apply the idea of probabilistic balancing to some other problems arising both in data 
+  structures and in incremental computation.
+  
+- From a theoretical point of view, there is no need for skip lists. Balanced trees can do everything that can be done with
+  skip lists and have good worst-case time bounds (unlike skip lists). However, implementing balanced trees is an exacting
+  task and as a result balanced tree algorithms are rarely implemented, Skip lists are a simple data structure that can be used in
+  place of balanced trees for most applications. Skip lists algorithms are very easy to implement and are  as fast as highly optimized 
+  balanced tree algorithms.
 
 ##### Indexable Skiplist 
 
