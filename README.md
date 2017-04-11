@@ -1527,6 +1527,9 @@ databases and filesystems.
   than one, rebalancing is done to restore this property. Lookup, insertion, and deletion all take O(log n) time in both the average and worst cases, 
   where n is the number of nodes in the tree prior to the operation.
 
+- is a binary search tree that is height balanced: for each node x, the heights of the left and right subtrees of x differ by at most 1. To 
+  implement an AVL tree, we maintain an extra attribute in each node: x:h is the height of node x. 
+
 ##### Red Black Tree
 - is a kind of self-balancing binary search tree. Each node of the binary tree has an extra bit, and that bit is often interpreted as the color (red or black) 
   of the node. These color bits are used to ensure the tree remains approximately balanced during insertions and deletions. 
