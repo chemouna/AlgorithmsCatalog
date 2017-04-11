@@ -1628,18 +1628,27 @@ databases and filesystems.
   time algorithm. 
 * Maximum matchings in graphs can be found in polynomial time.
 
-### Others 
+## Other Algorithms 
 
-#### Removing duplicates 
+### Removing duplicates 
 * To remove duplicates while preserving order in Java use LinkedHashSet
-* 
 
-## Algorithms that work by building an automata
+
+### Algorithms that work by building an automata
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
 * Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
 
-## N-Way Merge
+### N-Way Merge
 
+### Triangle Counting in Graphs
+
+- Solution using Adjacency matrix: The (i, j) element in the n'th power of an adjacency matrix A counts the number of paths of length n starting at i and ending at j.
+  A triangle is a path of length 3 that starts and ends at the same node. Therefore the i'th diagonal element of the 3rd power of A counts the number of triangles 
+  that contain i as one of the nodes.
+  Each distinct triangle will be counted twice for each of the three nodes in the graph (once in each direction, clockwise and anticlockwise).
+  Therefore the number of distinct triangles is trace(A^3) / 6 
+
+- [Related Paper](http://people.seas.harvard.edu/~babis/int-math-triangles.pdf)
 
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
