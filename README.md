@@ -1427,8 +1427,6 @@ using a Fibonacci heap, compared to O(m lg n) using a standard binary or binomia
 
 #### Rank-Pairing Heap 
 
-### Treap 
-
 ### Disjoint-set data structure
 
 #### Disjoint-set forests 
@@ -1529,6 +1527,15 @@ databases and filesystems.
 
 - is a binary search tree that is height balanced: for each node x, the heights of the left and right subtrees of x differ by at most 1. To 
   implement an AVL tree, we maintain an extra attribute in each node: x:h is the height of node x. 
+
+##### Treap 
+- A treap is a binary search tree with a modified way of ordering the nodes. 
+- The nodes of the treap are ordered so that the keys obey the binary-searchtree property and the priorities obey the min-heap order property:
+   - If v is a left child of u, then v.key < u.key.
+   - If v is a right child of u, then v.key > u.key.
+   - If v is a child of u, then v.priority > u:priority.
+(This combination of properties is why the tree is called a "treap": it has features of both a binary search tree and a heap.) 
+
 
 ##### Red Black Tree
 - is a kind of self-balancing binary search tree. Each node of the binary tree has an extra bit, and that bit is often interpreted as the color (red or black) 
