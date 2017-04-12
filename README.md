@@ -1652,6 +1652,7 @@ databases and filesystems.
 - Example usages : 
     - In Spark: http://note.yuhc.me/2015/03/graphx-triangle-count-label-propagation/  and 
                 https://github.com/apache/spark/blob/master/graphx/src/main/scala/org/apache/spark/graphx/lib/TriangleCount.scala 
+    - With MapReduce: [Paper on the subject](https://www.cs.utah.edu/~jeffp/teaching/MCMD/S16-MR-triangles.pdf)
     
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
