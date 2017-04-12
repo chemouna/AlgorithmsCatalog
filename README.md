@@ -1649,6 +1649,9 @@ databases and filesystems.
   Therefore the number of distinct triangles is trace(A^3) / 6 
 
 - [Related Paper](http://people.seas.harvard.edu/~babis/int-math-triangles.pdf)
-
+- Example usages : 
+    - In Spark: http://note.yuhc.me/2015/03/graphx-triangle-count-label-propagation/  and 
+                https://github.com/apache/spark/blob/master/graphx/src/main/scala/org/apache/spark/graphx/lib/TriangleCount.scala 
+    
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
