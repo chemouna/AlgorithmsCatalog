@@ -1364,6 +1364,12 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
 
 #### Stack
 
+There are multiple possible ways to implement a Stack:
+- With a static array 
+
+- With a Dynamic array 
+
+- With a LinkedList 
 
 
 #### Bit Array
