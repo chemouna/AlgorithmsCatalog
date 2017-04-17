@@ -1662,16 +1662,56 @@ while (current != NULL) {
 }
 ```
 #### Build: At Head With Push() 
- struct node* AddAtHead() {
- struct node* head = NULL;
+```C++
+struct node* AddAtHead() {
+struct node* head = NULL;
  int i;
  for (i=1; i<6; i++) {
    Push(&head, i);
- }
+}
  // head == {5, 4, 3, 2, 1};
  return(head);
 }
+```
 
+#### Build: With Tail Pointer 
+Adding a node at the tail of a list most often involves locating the last node in the list, and then changing its .next field from NULL to point to the new node
+
+#### Build: Special Case + Tail Pointer 
+```C++
+struct node* BuildWithSpecialCase() {
+struct node* head = NULL;
+struct node* tail;
+ int i;
+ // Deal with the head node here, and set the tail pointer
+ Push(&head, 1);
+ tail = head;
+ // Do all the other nodes using 'tail'
+ for (i=2; i<6; i++) {
+  Push(&(tail->next), i); // add node at tail->next
+  tail = tail->next; // advance tail to point to last node
+ }
+ return(head); // head == {1, 2, 3, 4, 5};
+}
+```
+
+#### Build: Temporary Dummy Nod 
+```C++
+struct node* BuildWithDummyNode() {
+struct node dummy; // Dummy node is temporarily the first node
+struct node* tail = &dummy; // Start the tail at the dummy.
+ // Build the list on dummy.next (aka tail->next)
+int i;
+ dummy.next = NULL;
+ for (i=1; i<6; i++) {
+  Push(&(tail->next), i);
+  tail = tail->next;
+ }
+ // The real result list is now in dummy.next
+ // dummy.next == {1, 2, 3, 4, 5};
+ return(dummy.next);
+}
+```
 ### N-Way Merge
 
 ### Triangle Counting in Graphs
