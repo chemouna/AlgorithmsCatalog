@@ -1651,6 +1651,27 @@ databases and filesystems.
 * Aho-Corasick algorithm uses a DFA in order to search for all the elements of a dictionary in a text in linear time, O(|w|) where w is our text. 
 * Levenshtein DFA : we can check if a set of words has a specific maximum limit of the Levenshtein distance from a given word. For this we need to construct the Levenshtein Automaton for a constant k which accepts all strings within k 
 
+### LinkedLists Techniques 
+
+#### Iterate Down a List
+```C++
+struct node* current = head;
+while (current != NULL) {
+  count++;
+  current = current->next;
+}
+```
+#### Build: At Head With Push() 
+ struct node* AddAtHead() {
+ struct node* head = NULL;
+ int i;
+ for (i=1; i<6; i++) {
+   Push(&head, i);
+ }
+ // head == {5, 4, 3, 2, 1};
+ return(head);
+}
+
 ### N-Way Merge
 
 ### Triangle Counting in Graphs
