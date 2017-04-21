@@ -58,12 +58,13 @@ Note: This is still very much in progress and not polished at all yet.
   - Another application example is event simulation since a  nice feature of the heap sort is that you can efficiently insert new items while the sort is going on, 
    provided that the inserted items are not "better" than the last 0'th element you extracted. and in event simulation contexts the tree holds all
    incoming events, and the "win" condition means the smallest scheduled time.  When an event schedule other events for execution, they are scheduled into
-   the future, so they can easily go into the heap.  So, a heap is a good structure for implementing schedulers.
+   the future, so they can easily go into the heap.  So, a heap is a good structure for implementing schedulers
 
   - If the heap invariant is protected at all time, index 0 is clearly the overall winner.  The simplest algorithmic way to remove it and
   find the "next" winner is to move some loser into the 0 position, and then percolate this new 0 down the tree, exchanging values, until 
   the invariant is re-established. This is clearly logarithmic on the total number of items in the tree. By iterating over all items, you get an O(n ln n) sort.
  
+ - 
  
  
 ### Binary Search
