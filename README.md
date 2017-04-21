@@ -41,13 +41,31 @@ Note: This is still very much in progress and not polished at all yet.
 ### By Self balancing BST
 
 ### Heaps 
-* Similar to balancing BST in Method 2 above, we can use a max heap on left side to represent elements that are less than effective median, and a min heap on right side to represent 
-  elements that are greater than effective median. 
+* Similar to balancing BST in Method 2 above, we can use a max heap on left side to represent elements that are less than effective median, and a min heap on right 
+  side to represent elements that are greater than effective median. 
 
-* After processing an incoming element, the number of elements in heaps differ utmost by 1 element. When both heaps contain same number of elements, we pick average of heaps root 
-  data as effective median. When the heaps are not balanced, we select effective median from the root of heap containing more elements.
+* After processing an incoming element, the number of elements in heaps differ utmost by 1 element. When both heaps contain same number of elements, 
+  we pick average of heaps root data as effective median. When the heaps are not balanced, we select effective median from the root of heap containing more elements.
 
+* Heaps can be represented as arrays for which a[k] <= a[2*k+1] and a[k] <= a[2*k+2] for all k, counting elements from 0. For the sake of comparison,
+  non-existing elements are considered to be infinite. The interesting property of a heap is that a[0] is always its smallest element (in case of min heap 
+  and biggest element in case of max heap).
+  - An application example is binary tournament we see in sports, each cell is the winner over the two cells it tops, and we can trace the winner down the tree
+    to see all opponents s/he had.  However, in many computer applications of such tournaments, we do not need to trace the history of a winner.
+    To be more memory efficient, when a winner is promoted, we try to replace it by something else at a lower level, and the rule becomes
+    that a cell and the two cells it tops contain three different items, but the top cell "wins" over the two topped cells.
 
+  - Another application example is event simulation since a  nice feature of the heap sort is that you can efficiently insert new items while the sort is going on, 
+   provided that the inserted items are not "better" than the last 0'th element you extracted. and in event simulation contexts the tree holds all
+   incoming events, and the "win" condition means the smallest scheduled time.  When an event schedule other events for execution, they are scheduled into
+   the future, so they can easily go into the heap.  So, a heap is a good structure for implementing schedulers.
+
+  - If the heap invariant is protected at all time, index 0 is clearly the overall winner.  The simplest algorithmic way to remove it and
+  find the "next" winner is to move some loser into the 0 position, and then percolate this new 0 down the tree, exchanging values, until 
+  the invariant is re-established. This is clearly logarithmic on the total number of items in the tree. By iterating over all items, you get an O(n ln n) sort.
+ 
+ 
+ 
 ### Binary Search
 Binary search is used to quickly find a value in a sorted sequence (consider a sequence an ordinary array for now). 
 The search space is initially the entire sequence. At each step, the algorithm compares the median value in the search space to the target value. 
@@ -1727,6 +1745,9 @@ int i;
     - In Spark: http://note.yuhc.me/2015/03/graphx-triangle-count-label-propagation/  and 
                 https://github.com/apache/spark/blob/master/graphx/src/main/scala/org/apache/spark/graphx/lib/TriangleCount.scala 
     - With MapReduce: [Paper on the subject](https://www.cs.utah.edu/~jeffp/teaching/MCMD/S16-MR-triangles.pdf)
-    
+
+### Sliding Window Minimum Algorithm
+//TBD
+ 
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
