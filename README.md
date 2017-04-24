@@ -64,7 +64,6 @@ Note: This is still very much in progress and not polished at all yet.
   find the "next" winner is to move some loser into the 0 position, and then percolate this new 0 down the tree, exchanging values, until 
   the invariant is re-established. This is clearly logarithmic on the total number of items in the tree. By iterating over all items, you get an O(n ln n) sort.
  
- - 
  
  
 ### Binary Search
@@ -1215,15 +1214,35 @@ which assures a much faster running time than other techniques like backtracking
 * Whenever a recursion tree for the natural recursive solution to a problem contains the same subproblem repeatedly, and the total number of distinct subproblems
 
 ## Greedy Algorithms 
-follows the problem solving heuristic of making the locally optimal choice at each stage[1] with the hope of finding a global optimum, In mathematical optimization, 
+* follows the problem solving heuristic of making the locally optimal choice at each stage[1] with the hope of finding a global optimum, In mathematical optimization, 
 greedy algorithms solve combinatorial problems having the properties of matroids. 
 
-greedy algorithms have five components:
+* greedy algorithms have five components:
  - A candidate set, from which a solution is created
  - A selection function, which chooses the best candidate to be added to the solution
  - A feasibility function, that is used to determine if a candidate can be used to contribute to a solution
  - An objective function, which assigns a value to a solution, or a partial solution, and
  - A solution function, which will indicate when we have discovered a complete solution 
+
+* Steps to design greedy algorithms:
+- Cast the optimization problem as one in which we make a choice and are left with one subproblem to solve. 
+- Prove that there is always an optimal solution to the original problem that makes the greedy choice, so that the greedy choice is always safe 
+- Demonstrate optimal substructure by showing that, having made the greedy choice, what remains is a subproblem with the property that if we 
+  combine an optimal solution to the subproblem with the greedy choice we have made, we arrive at an optimal solution to the original problem. 
+
+* Greedy-choice property: 
+- We can assemble a globally optimal solution by making locally optimal (greedy) choices.  when we are considering which choice to make, we make
+  the choice that looks best in the current problem, without considering results from subproblems.
+
+* By preprocessing the input or by using an appropriate data structure (often a priority queue), we often can make greedy choices quickly, 
+  thus yielding an efficient algorithm.
+
+* Greedy versus dynamic programming:
+- A dynamicprogramming algorithm proceeds bottom up, whereas a greedy strategy usually progresses in a top-down fashion, making one greedy 
+  choice after another, reducing each given problem instance to a smaller one. 
+  
+
+## Dynamic Programming 
 
 ### Longest increasing subsequence
 
