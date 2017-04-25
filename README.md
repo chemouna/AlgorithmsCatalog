@@ -1241,6 +1241,15 @@ greedy algorithms solve combinatorial problems having the properties of matroids
 - A dynamicprogramming algorithm proceeds bottom up, whereas a greedy strategy usually progresses in a top-down fashion, making one greedy 
   choice after another, reducing each given problem instance to a smaller one. 
   
+### Matroids and greedy methods
+
+#### Greedy algorithms on a weighted matroid
+
+### Techniques for solving greedy algorithms problems 
+- Preprocess the input first like sorting it or putting it in a datastructure such as a queue (An example is sorting the input by finish time as done in 
+  activity scheduling problem).
+
+- Decompose the greedy choice into multiple cases if it can be handled as one as used in this topcoder problem : [BoardSplitting](The greedy choice can be composed of multiple cases)
 
 ## Dynamic Programming 
 
