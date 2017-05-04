@@ -367,6 +367,9 @@ read, sorted, and written out to a temporary file. In the merge phase, the sorte
 
 ### Median Finding algorithms
 
+### K-th Order Statistics
+
+
 ## Insertion Algorithms 
 
 ## Scanning Algorithms 
@@ -549,11 +552,13 @@ Hash tables deal with collisions in one of two ways.
 
 ### Carter-Wegman class of hash functions
 
+## Strings
+
 ### Double hash technique 
 
-## String Matching Algorithms
+### String Matching Algorithms
 
-### Knuth–Morris–Pratt algorithm
+#### Knuth–Morris–Pratt algorithm
 
 * The basic idea behind the algorithm discovered by Knuth, Morris, and Pratt is this: whenever we detect a mismatch, we
 already know some of the characters in the text (since they matched the pattern characters prior to the mismatch). We can 
@@ -595,7 +600,7 @@ We can use the values in the partial match table to skip ahead (rather than redo
 If a partial match of length partial_match_length is found and table[partial_match_length] > 1, we may skip ahead partial_match_length - table[partial_match_length - 1] characters.
 - a value T[i] in T is the amount of "backtracking" we need to do after a mismatch
 
-### Boyer-Moore Algorithm
+#### Boyer-Moore Algorithm
 
 * well-suited for applications in which the pattern is much shorter than the text or where it persists across multiple searches 
    matches on the tail of the pattern rather than the head, and to skip along the text in jumps of multiple characters rather than 
@@ -610,7 +615,7 @@ If a partial match of length partial_match_length is found and table[partial_mat
   this is the case, if the first comparison causes a mismatch and the corresponding text symbol does not occur in the pattern at all. 
   For the good suffix heuristics this is the case, if only the first comparison was a match, but that symbol does not occur elsewhere in the pattern.
 
-### Boyer–Moore–Horspool or Horspool algorithm
+#### Boyer–Moore–Horspool or Horspool algorithm
 
 - instead of the "bad character" that caused the mismatch, in each case the rightmost character of the current text window is used 
   for determining the shift distance.
@@ -638,7 +643,7 @@ function preprocess(pattern)
         skip ← skip + T[haystack[skip + length(needle) - 1]]
     return not-found
 ```
-### Rabin-Karp algorithm 
+#### Rabin-Karp algorithm 
 
 * Rabin–Karp algorithm is a randomized algorithm for the string search problem that finds all probable matches 
 for the needle in the haystack in linear time.
@@ -670,6 +675,14 @@ check if the string matches character by character once their hashes are equal.
 treats every substring as a number in some base, the base being usually a large prime. For example, if the substring is "hi" 
 and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609 (ASCII of 'h' is 104 and of 'i' is 105). 
 
+
+### Huffman Compression
+* The idea is to abandon the way in which text files are usually stored: instead of using the usual 7 or 8 bits for each character, 
+  we use fewer bits for characters that appear often than for those that appear rarely. 
+  Huffman code is a particular type of optimal prefix code that is commonly used for lossless data compression. 
+
+#### Variable-length code
+* is a code which maps source symbols to a variable number of bits. 
 
 
 ### Aho–Corasick algorithm
@@ -1398,6 +1411,27 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
 
 ## Randomized Algorithms
 
+### Random permutation/Shuffling
+ 
+#### Fisher–Yates shuffle 
+* Steps of the algorithm: 
+    1 - Write down the numbers from 1 through N.
+    2 - Pick a random number k between one and the number of unstruck numbers remaining (inclusive).
+    3 - Counting from the low end, strike out the kth number not yet struck out, and write it down at the end of a separate list.
+    4 - Repeat from step 2 until all the numbers have been struck out.
+    5 - The sequence of numbers written down in step 3 is now a random permutation of the original numbers 
+
+##### Modern version of Fisher-Yates (Algorithm P)
+
+#### Sattolo's algorithm
+* The only difference between Durstenfeld's and Sattolo's algorithms is that in the latter, in step 2 above, the random number j is chosen 
+  from the range between 1 and i−1 (rather than between 1 and i) inclusive. This simple change modifies the algorithm so that the resulting 
+  permutation always consists of a single cycle. 
+
+
+### Cyclic Permutations 
+
+
 ## Backtracking 
 - Backtracking is a general algorithm for finding all (or some) solutions to some computational problems that incrementally
   builds candidates to the solutions, and abandons each partial candidate c ("backtracks") as soon as it determines that c 
@@ -1759,6 +1793,14 @@ int i;
  return(dummy.next);
 }
 ```
+
+#### Cycle Detection 
+
+##### Robert W. Floyd method. 
+
+##### Richard P. Brent method
+ 
+
 ### N-Way Merge
 
 ### Triangle Counting in Graphs
