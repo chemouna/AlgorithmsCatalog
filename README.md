@@ -1126,6 +1126,27 @@ process_edge(int x, int y) {
 * The time complexity of IDDFS works out to be the same as depth-first search, i.e.  O(b^d) where b is the branching factor and d is the 
   depth of the goal, and space complexity of IDDFS is O(d) where d is the depth of the goal.
 
+### Resemblence between BFS and DFS 
+- the symetry between BFS and DFS is cool :
+DFS:
+```
+list nodes_to_visit = {root}
+while(nodes_to_visit isnt empty) {
+  current_node = nodes_to_visit.take_first();
+  nodes_to_visit.preprend(current_node.children);
+  //do something
+}
+```
+
+BFS:
+```
+list nodes_to_visit = {root}
+while(nodes_to_visit isnt empty) {
+  current_node = nodes_to_visit.take_first();
+  nodes_to_visit.append(current_node.children)
+}
+```
+
 ### Strongly Connected Components 
 A strongly connected component is a maximal subgraph, where all the vertices are strongly connected with each other:
 
@@ -1225,6 +1246,13 @@ which assures a much faster running time than other techniques like backtracking
   we say that the optimization problem has overlapping subproblems.
 
 * Whenever a recursion tree for the natural recursive solution to a problem contains the same subproblem repeatedly, and the total number of distinct subproblems
+
+### Partition Problem
+* problem deciding whether a given multiset S of positive integers can be partitioned into two subsets S1 and S2 such that the sum of the numbers in S1 equals the 
+  sum of the numbers in S2. Although the partition problem is NP-complete, there is a pseudo-polynomial time dynamic programming solution, 
+  an optimization version of the partition problem, which is to partition the multiset S into two subsets S1, S2 such that the difference between the sum of elements 
+  in S1 and the sum of elements in S2 is minimized 
+  
 
 ## Greedy Algorithms 
 * follows the problem solving heuristic of making the locally optimal choice at each stage[1] with the hope of finding a global optimum, In mathematical optimization, 
@@ -1480,8 +1508,16 @@ The name comes from the shape: a binomial tree of order {\displaystyle n} n has 
   Due to the structure of binomial trees, they can be merged trivially. As their root node is the smallest element within the tree, by comparing 
   the two keys, the smaller of them is the minimum key, and becomes the new root node. Then the other tree becomes a subtree of the combined tree. 
 
+#### Min Heap
 
-#### Min-max-median Heap
+#### Max Heap 
+
+#### Min-Max Heap 
+* a min-max heap is a complete binary tree data structure which combines the usefulness of both a min-heap and a max-heap, that is, it provides 
+constant time retrieval and logarithmic time removal of both the minimum and maximum elements in it. 
+
+
+##### Min-max-median Heap
 
 #### D-ary Heap
 
@@ -1680,7 +1716,7 @@ databases and filesystems.
 - Search: A search for a target element begins at the head element in the top list, and proceeds horizontally until 
  the current element is greater than or equal to the target. If the current element is equal to the target, it has been found. 
  If the current element is greater than the target, or the search reaches the end of the linked list, the procedure is repeated 
- after returning to the previous element and dropping down vertically to the next lower list. 
+ after returning to the previous element and dropping down vertically to the next lower list. b
 
 - Example usage :
   - Skiplist is used in Redis to implement a "sorted set" data type. 
@@ -1696,6 +1732,7 @@ databases and filesystems.
   task and as a result balanced tree algorithms are rarely implemented, Skip lists are a simple data structure that can be used in
   place of balanced trees for most applications. Skip lists algorithms are very easy to implement and are  as fast as highly optimized 
   balanced tree algorithms.
+
 
 ##### Indexable Skiplist 
 
