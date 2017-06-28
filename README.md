@@ -1,5 +1,5 @@
 
-# AlgorithmsCatalog
+# Algorithmscatalog
 Inspired by the [website](https://wiki.algo.informatik.tu-darmstadt.de/Main_Page) and [Writing correct code, part 3: preconditions and postconditions]
 (https://reprog.wordpress.com/2010/04/30/writing-correct-code-part-3-preconditions-and-postconditions-binary-search-part-4c/) this is an attempt to 
 catalog algorithms by the general problems they solve and describe them in a more clear and formal way 
@@ -1490,13 +1490,22 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
 #### Array
 
 #### Stack
-
+- a linear data structure, or more abstractly a sequential collection, the push and pop operations occur only at one end of the structure, referred to as the top of the stack.
+This makes it possible to implement a stack as a singly linked list and a pointer to the top element.
+ 
 There are multiple possible ways to implement a Stack:
 - With a static array 
 
 - With a Dynamic array 
 
 - With a LinkedList 
+
+##### Applications of stacks
+- Expression evaluation
+
+- Backtracking
+
+- Efficient Algorithms
 
 
 #### Bit Array
@@ -1527,6 +1536,7 @@ The name comes from the shape: a binomial tree of order {\displaystyle n} n has 
   the two keys, the smaller of them is the minimum key, and becomes the new root node. Then the other tree becomes a subtree of the combined tree. 
 
 #### Min Heap
+
 
 #### Max Heap 
 
