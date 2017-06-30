@@ -1449,6 +1449,28 @@ c(i, j) = min (i < k <= j) {c(i, k-1) + c(k, j) + p(k) + w(i, k-1) + w(k,j)}
 
 ### The Least Weight Subsequence Problem
 
+### Segment trees
+- a tree data structure for storing intervals, or segments. It allows querying which of the stored segments contain a given point. It is, in principle, a static structure
+- A segment tree for a set I of n intervals uses O(n log n) storage and can be built in O(n log n) time. Segment trees support searching for all the intervals that contain
+  a query point in O(log n + k), k being the number of retrieved intervals or segments
+
+
+### Interval Trees
+- an interval tree is a tree data structure to hold intervals. Specifically, it allows one to efficiently find all intervals that overlap with any given interval or point.
+  It is often used for windowing queries
+
+
+### Fenwick Trees
+- A Fenwick tree or binary indexed tree is a data structure that can efficiently update elements and calculate prefix sums in a table of numbers.
+- When compared with a flat array of numbers, the Fenwick tree achieves a much better balance between two operations: element update and prefix sum calculation.
+  In a flat array of n numbers, you can either store the elements, or the prefix sums. In the first case, computing prefix sums requires linear time; in the second case,
+  updating the array elements requires linear time. Fenwick trees allow both operations to be performed in O(log n) time. This is achieved by representing the numbers as
+  a tree, where the value of each node is the sum of the numbers in that subtree. The tree structure allows operations to be performed using only O(log n) node accesses.
+
+- in practice they are implemented as an implicit data structure using a flat array. Given an index in the array representing a vertex, the index of a vertex's parent or
+  child is calculated through bitwise operations on the binary representation of its index. Each element of the array contains the pre-calculated sum of a range of values,
+  and by combining that sum with additional ranges encountered during an upward traversal to the root, the prefix sum is calculated.
+
 
 ## Computational Geometry Algorithms 
 
