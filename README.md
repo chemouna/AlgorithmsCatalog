@@ -1814,12 +1814,23 @@ databases and filesystems.
 #### Lexicographic Permutations
 
 ##### Next lexicographical permutation algorithm
-An algorithm for finding the next permutation in lexicographic ordering:
+the basic idea: We need to try and keep the bigger digits to the right as much as possible.
+So an algorithm for finding the next permutation in lexicographic ordering:
 1 - Find the biggest i such that a[i] < a[i + 1];
 2 - Find the biggest j greater than i such that a[j] > a[i];
 3 - Swap a[i] and a[j];
 4 - Reverse the elements from a[i + 1] to the last element.
 If the first step fails (because such index does not exist) the current permutation is the last one.
+
+Example:
+The algorithm actually finds the next permutation -- the lexicographically next one. The idea is this: suppose you are given a sequence, say "32541". What is the next permutation?
+
+If you think about it, you'll see that it is "34125". And your thoughts were probably something this: In "32541",
+
+there is no way to keep the "32" fixed and find a later permutation in the "541" part, because that permutation is already the last one for 5,4, and 1 -- it is sorted in decreasing order.
+So you'll have to change the "2" to something bigger -- in fact, to the smallest number bigger than it in the "541" part, namely 4.
+Now, once you've decided that the permutation will start as "34", the rest of the numbers should be in increasing order, so the answer is "34125".
+
 
 
 
