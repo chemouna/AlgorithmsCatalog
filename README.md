@@ -1809,6 +1809,20 @@ databases and filesystems.
   time algorithm. 
 * Maximum matchings in graphs can be found in polynomial time.
 
+### Permutation algorithms
+
+#### Lexicographic Permutations
+
+##### Next lexicographical permutation algorithm
+An algorithm for finding the next permutation in lexicographic ordering:
+1 - Find the biggest i such that a[i] < a[i + 1];
+2 - Find the biggest j greater than i such that a[j] > a[i];
+3 - Swap a[i] and a[j];
+4 - Reverse the elements from a[i + 1] to the last element.
+If the first step fails (because such index does not exist) the current permutation is the last one.
+
+
+
 ## Other Algorithms 
 
 ### Removing duplicates 
