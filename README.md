@@ -686,6 +686,11 @@ check if the string matches character by character once their hashes are equal.
 treats every substring as a number in some base, the base being usually a large prime. For example, if the substring is "hi" 
 and the base is 101, the hash value would be 104 × 101^1 + 105 × 101^0 = 10609 (ASCII of 'h' is 104 and of 'i' is 105). 
 
+### String data structures 
+
+#### DAFSM 
+(Deterministic acyclic finite state automaton)
+
 
 ### Huffman Compression
 * The idea is to abandon the way in which text files are usually stored: instead of using the usual 7 or 8 bits for each character, 
@@ -1024,6 +1029,19 @@ The one catch here is that this assumes that you have Dijkstra's algorithm backe
 
 
 #### Gabow's Shortest Paths Algorithm
+
+### Bipartite Graphs
+A bipartite graph is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent. 
+bipartite graphs form a model of interaction between two different types of objects. 
+
+- All acyclic graphs are bipartite 
+
+- Visually you can think of it as a bunch of dots which can be either of two colors and lines connecting the dots where no two dots of the same color are connected by a line.
+
+- bipartite graph structure can be used to capture a relationship between two types of objects where the distinction between the types of objects is important. 
+
+- balanced bipartite : when the two sets V1 and V2 that make it bipartite are such that |V1| = |V2|
+
 
 ## Overlapping subproblems
 
@@ -1633,8 +1651,11 @@ completely-empty and completely-full states while using 100% of the storage.
 
 - Trie allows fast searching for key in huge volume of texts. It is also useful for finding predecessor and successors as well as lexicographically sorting strings.
 
+- Tries are like normal Trees but, instead of having a value stored on every node, it is only stored on the final leaves.  
+
 Exercices: 
 - [Trie application I: Tagalog alphabet sorting](http://sukwonoh.blogspot.fr/2012/09/trie-application-i-topcoder-srm-342.html)
+
 
 #### Bitwise Trie 
 
@@ -1934,3 +1955,12 @@ int i;
  
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
+
+### Algorithm Techniques 
+
+#### Minimal Arrangement 
+- If you want to minimize the sum of Ai * Bi, you should multiply the smallest Ai by the largest Bi, the second-smallest Ai by the second-largest Bi, and so on. 
+   In other words, if Bi > Bj, then Ai must not be greater than Aj (you can prove this by contradiction). 
+
+#### String sorting for a known set of characters 
+- If you know that the string consist only of certain characters (which is often the case), you can use a variant of BucketSort or RadixSort.
