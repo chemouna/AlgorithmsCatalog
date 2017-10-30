@@ -1031,7 +1031,9 @@ The one catch here is that this assumes that you have Dijkstra's algorithm backe
 #### Gabow's Shortest Paths Algorithm
 
 ### Bipartite Graphs
-A bipartite graph is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent. 
+A bipartite graph G is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent, 
+the two sets V1 and V2 are called the colour classes of the graph G and (V1, V2) is called a bipartition of G. 
+
 bipartite graphs form a model of interaction between two different types of objects. 
 
 - All acyclic graphs are bipartite 
