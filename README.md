@@ -947,8 +947,8 @@ Relax(u, v) {
 
 * In common presentations of Dijkstra's algorithm, initially all nodes are entered into the priority queue. This is, however, not necessary:
   the algorithm can start with a priority queue that contains only one item, and insert new items as they are discovered (instead of doing a decrease-key, 
-  check whether the key is in the queue; if it is, decrease its key, otherwise insert it).[3]:198 This variant has the same worst-case bounds as the common 
-  variant, but maintains a smaller priority queue in practice, speeding up the queue operations.[4]
+  check whether the key is in the queue; if it is, decrease its key, otherwise insert it). This variant has the same worst-case bounds as the common 
+  variant, but maintains a smaller priority queue in practice, speeding up the queue operations.
 
   Moreover, not inserting all nodes in a graph makes it possible to extend the algorithm to find the shortest path from a single source to the closest of a 
   set of target nodes on infinite graphs or those too large to represent in memory. The resulting algorithm is called uniform-cost search (UCS) in the artificial intelligence literature 
@@ -965,6 +965,20 @@ Relax(u, v) {
 * to examine an edge to see if it offers a better path to a node is referred to as relaxing the edge (because in general mathematically, relaxation 
 is making a change that reduces constraints. When the Dijkstra algorithm examines an edge, it removes an edge from the pool, thereby reducing the number of constraints)
 
+- The basic operation of Dijkstra's algorithm is edge relaxation: if there is an edge from u to v, then the shortest known path from s to u (d[u]) can be
+  extended to a path from s to v by adding edge (u,v) at the end. This path will have length d[u] + w(u,v). 
+  If this is less than the current d[v], we can replace the current value of d[v] with the new value. 
+  Edge relaxation is applied until all values d[v] represent the cost of the shortest path from s to v. The algorithm is organized so that each edge (u,v) is relaxed 
+  only once, when d[u] has reached its final value.
+
+- The simplest implementation of the Dijkstra's algorithm stores vertices of set Q in an ordinary linked list or array, and operation Extract-Min(Q) is simply
+  a linear search through all vertices in Q. In this case, the running time is O(V^2).
+  For sparse graphs, that is, graphs with much less than V^2 edges, Dijkstra's algorithm can be implemented more efficiently by storing the graph in the form
+  of adjacency lists and using a binary heap or Fibonacci heap as a priority queue to implement the Extract-Min function. With a binary heap, the algorithm
+  requires O((E+V)lgV) time, and the Fibonacci heap improves this to O(E + VlgV).
+ 
+- Using decrease-key in dijkstra's algorithm, plus a good priority queue, can drop the asymptotic runtime of Dijkstra's beyond what's possible if you keep doing enqueues and dequeues. 
+
 * Problems solved with Djikstra
 - From Top Coder :
      [RoboCourier](https://community.topcoder.com/stat?c=problem_statement&pm=1749&rd=4555)
@@ -975,7 +989,10 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
      
 ##### Fast marching method
 
-##### Variants of Djikstra's Algorithm
+##### Variants and Usages of Djikstra's Algorithm
+
+###### Gabow's Shortest Paths Algorithm 
+
 
 ###### Dial's Algorithm 
 
@@ -1043,6 +1060,8 @@ bipartite graphs form a model of interaction between two different types of obje
 - bipartite graph structure can be used to capture a relationship between two types of objects where the distinction between the types of objects is important. 
 
 - balanced bipartite : when the two sets V1 and V2 that make it bipartite are such that |V1| = |V2|
+
+### Steiner trees 
 
 
 ## Overlapping subproblems
