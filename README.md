@@ -991,9 +991,6 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
 
 ##### Variants and Usages of Djikstra's Algorithm
 
-###### Gabow's Shortest Paths Algorithm 
-
-
 ###### Dial's Algorithm 
 
 * Using Bucket queues 
@@ -1038,14 +1035,22 @@ weights to be negative numbers, but no negative-weight cycles may exist.
   
 * Johnson's algorithm is a way to find the shortest paths between all pairs of vertices in a sparse, edge weighted, directed graph.
 
-* Johnson's algorithm is a slight modification to running Dijkstra's algorithm from each node that allows that approach to work even if the graph contains negative edges (as long as there aren't any negative cycles). The algorithm works by first running Bellman-Ford on the graph to transform it to a graph with no negative edges, then using Dijkstra's algorithm starting at each vertex. Because Bellman-Ford runs in time O(mn), the overall asymptotic runtime is still O(mn + n2 log n), so if m = o(n2) (note that this is little-o of n), this approach is asymptotically faster than using Floyd-Warshall.
+* Johnson's algorithm is a slight modification to running Dijkstra's algorithm from each node that allows that approach to work even if the graph contains negative edges (as long as there aren't any negative cycles). 
+  The algorithm works by first running Bellman-Ford on the graph to transform it to a graph with no negative edges, then using Dijkstra's algorithm starting at each vertex. Because Bellman-Ford runs in time O(mn), 
+  the overall asymptotic runtime is still O(mn + n^2 log n), so if m = o(n^2) (note that this is little-o of n), this approach is asymptotically faster than using Floyd-Warshall.
 
-The one catch here is that this assumes that you have Dijkstra's algorithm backed by a Fibonacci heap. If you don't have Fibonacci heap available and aren't willing to put in the 72 hours necessary to build, debug, and test one, then you can still use a binary heap for Dijkstra's algorithm; it just increases the runtime to O(m log n), so this version of Johnson's algorithm runs in O(mn log n). This is no longer always asymptotically faster than Floyd-Warshall, because if m = Ω(n2) then Floyd-Warshall runs in O(n3) whileJohnson's algorithm runs in O(n3 log n) 
+* The one catch here is that this assumes that you have Dijkstra's algorithm backed by a Fibonacci heap. If you don't have Fibonacci heap available and aren't willing to put in the 72 hours necessary to build, debug,
+  and test one, then you can still use a binary heap for Dijkstra's algorithm; it just increases the runtime to O(m log n), so this version of Johnson's algorithm runs in O(mn log n). This is no longer always asymptotically 
+  faster than Floyd-Warshall, because if m = Ω(n2) then Floyd-Warshall runs in O(n^3) while Johnson's algorithm runs in O(n^3 log n) 
   - With a Fibonacci heap, Johnson's algorithm is always asymptotically at least as good as Floyd-Warshall, though it's harder to code up.
   - With a binary heap, Johnson's algorithm is usually asymptotically at least as good as Floyd-Warshall, but is not a good option when dealing with large, dense graphs. 
 
-
+- Johnson's algorithm is interesting because it uses two other shortest path algorithms as subroutines. It uses Bellman-Ford in order to reweight the input graph to eliminate negative edges and detect negative cycles. 
+  With this new, altered graph, it then uses Dijkstra's shortest path algorithm to calculate the shortest path between all pairs of vertices. The output of the algorithm is then the set of shortest paths in the original graph.
+ 
+ 
 #### Gabow's Shortest Paths Algorithm
+
 
 ### Bipartite Graphs
 A bipartite graph G is a set of graph vertices decomposed into two disjoint sets such that no two graph vertices within the same set are adjacent, 
