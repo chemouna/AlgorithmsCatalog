@@ -2039,10 +2039,26 @@ Examples:
 
 #### Prune and Search
 - Prune and search is a method for finding an optimal value by iteratively dividing a search space into two parts – the promising one, which contains the optimal value and is 
-recursively searched and the second part without optimal value, which is pruned (thrown away).
+  recursively searched and the second part without optimal value, which is pruned (thrown away).
 
+- The idea of the paradigm is to perform just enough computation to detect a constant fraction of the data as irrelevant and to remove it and then recur, its clear from the description 
+  that only problems that product little output as opposed to creating an elaborate structure qualify as candidates for the application of this technique 
+  
 
 #### Decrease and conquer 
+
+
+#### Sweep technique 
+
+#### Geometric transformation
+
+#### Divide and query 
+
+#### Multidimensional Search 
+ex: segment trees, k-d trees 
+
+#### Random Sampling 
+
 
 
 ### Algorithms on Data Structures 
@@ -2106,3 +2122,6 @@ Specifity on arrays is :
 
 
 #### Graphs 
+
+
+#### Geometric Problems 
