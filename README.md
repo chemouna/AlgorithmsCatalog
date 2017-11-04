@@ -2063,6 +2063,7 @@ ex: segment trees, k-d trees
 - uses caching to get efficient solutions. it splits the problem in two and then tries to merge the results.
 
 ##### Examples
+
 ###### 4Sum 
 Given A, an array of integers, find out if there are any four numbers in the array that sum up to zero (the same element can be used multiple times). 
 For example given A = [2, 3, 1, 0, -4, -1] a solution is 3 + 1 + 0 - 4 = 0 or 0 + 0 + 0 + 0 = 0. 
@@ -2085,6 +2086,9 @@ def 4sum(A):
  
   print "No solution."
 ```
+
+###### Bidirectional search
+
 
 ### Algorithms on Data Structures 
 
@@ -2135,6 +2139,20 @@ Specifity on arrays is :
 ###### Longest Subarray with the Minimum Larger than the Length
 
 ###### Maximum Density Subarray with Length Constraint 
+
+##### Subset sum problem 
+
+###### 3-SUM problem 
+
+###### 4-SUM problem 
+
+###### K-SUM problem 
+- k-SUM can be solved more quickly :
+    - For even k: Compute a sorted list S of all sums of k/2 input elements. Check whether S contains both some number x and its negation −x. The algorithm runs in O(n^(k/2) log n) time.
+    - For odd k: Compute the sorted list S of all sums of (k−1) / 2 input elements. For each input element a, check whether S contains both x and −x, for some number x. 
+       (The second step is essentially the O(n^2) time algorithm for 3SUM. The algorithm runs in O(n^(k+1) / 2) time. 
+
+- k-SUM requires time n^(Ω(d)) unless k-SAT can be solved in 2^O(n) time for any constant k. This was shown in this paper [On the possibility of faster SAT algorithms](http://people.csail.mit.edu/mip/papers/sat-lbs/paper.pdf). 
 
 ##### Find a subsequence (not necessarly contiguous) satisfying some properties
 
