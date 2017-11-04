@@ -2059,7 +2059,32 @@ ex: segment trees, k-d trees
 
 #### Random Sampling 
 
+#### Meet in the middle (Split and merge)
+- uses caching to get efficient solutions. it splits the problem in two and then tries to merge the results.
 
+##### Examples
+###### 4Sum 
+Given A, an array of integers, find out if there are any four numbers in the array that sum up to zero (the same element can be used multiple times). 
+For example given A = [2, 3, 1, 0, -4, -1] a solution is 3 + 1 + 0 - 4 = 0 or 0 + 0 + 0 + 0 = 0. 
+
+Solution: The critical insight comes from rewriting a + b + c + d = 0 as a + b = -(c + d). 
+Now we store all n2 sums a + b in a hash set S. Then iterate through all n2 combinations for c and d and check if S contains -(c + d). 
+
+```python
+def 4sum(A):
+  sums = {}
+  for a in A:
+    for b in A:
+      sums[a + b] = (a, b)
+ 
+  for c in A:
+    for d in A:
+      if -(c + d) in sums:
+        print (sums[-(c + d)][0], sums[-(c + d)][1], c, d)
+        return
+ 
+  print "No solution."
+```
 
 ### Algorithms on Data Structures 
 
