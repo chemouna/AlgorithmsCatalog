@@ -979,7 +979,9 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
  
 - Using decrease-key in dijkstra's algorithm, plus a good priority queue, can drop the asymptotic runtime of Dijkstra's beyond what's possible if you keep doing enqueues and dequeues. 
 
-* Problems solved with Djikstra
+- Java implementation of Dijkstra's algorithm 
+
+* Problems solved with Dijkstra
 - From Top Coder :
      [RoboCourier](https://community.topcoder.com/stat?c=problem_statement&pm=1749&rd=4555)
      [IslandFerries](https://community.topcoder.com/stat?c=problem_statement&pm=2437&rd=5069)
@@ -1002,6 +1004,42 @@ is making a change that reduces constraints. When the Dijkstra algorithm examine
 ##### A* search algorithm
 
 #### Bellman–Ford algorithm 
+
+- computes shortest paths from a single source vertex to all of the other vertices in a weighted graph. It is slower than Dijkstra's algorithm for the same problem, 
+  but capable of handling graphs in which some of the edge weights are negative numbers.
+
+- is based on the principle of relaxation, in which an approximation to the correct distance is gradually replaced by more accurate values until eventually reaching the optimum solution. 
+
+Algorithm:
+```
+function BellmanFord(list vertices, list edges, vertex source)
+   ::distance[],predecessor[]
+
+   // This implementation takes in a graph, represented as
+   // lists of vertices and edges, and fills two arrays
+   // (distance and predecessor) with shortest-path
+   // (less cost/distance/metric) information
+
+   // Step 1: initialize graph
+   for each vertex v in vertices:
+       distance[v] := inf             // At the beginning , all vertices have a weight of infinity
+       predecessor[v] := null         // And a null predecessor
+   
+   distance[source] := 0              // Except for the Source, where the Weight is zero 
+   
+   // Step 2: relax edges repeatedly
+   for i from 1 to size(vertices)-1:
+       for each edge (u, v) with weight w in edges:
+           if distance[u] + w < distance[v]:
+               distance[v] := distance[u] + w
+               predecessor[v] := u
+
+   // Step 3: check for negative-weight cycles
+   for each edge (u, v) with weight w in edges:
+       if distance[u] + w < distance[v]:
+           error "Graph contains a negative-weight cycle"
+   return distance[], predecessor[]
+```
 
 
 #### Flood fill
@@ -1878,9 +1916,6 @@ there is no way to keep the "32" fixed and find a later permutation in the "541"
 So you'll have to change the "2" to something bigger -- in fact, to the smallest number bigger than it in the "541" part, namely 4.
 Now, once you've decided that the permutation will start as "34", the rest of the numbers should be in increasing order, so the answer is "34125".
 
-
-
-
 ## Other Algorithms 
 
 ### Removing duplicates 
@@ -1978,7 +2013,17 @@ int i;
 
 ### Sliding Window Minimum Algorithm
 //TBD
- 
+
+### Prefix Sums 
+- prefix sum of a sequence of numbers x0, x1, x2, ... is a second sequence of numbers y0, y1, y2, ..., the sums of prefixes (running totals) of the input sequence: 
+- When a data set for prefix sum may be updated dynamically, it may be stored in a Fenwick tree data structure. This structure allows both the lookup of any individual prefix sum value and the 
+  modification of any array value in logarithmic time per operation.
+
+Examples:
+- Given an array A[1..n]. Find the sub-array that it's sum is smallest and at least M. 
+  Solution: pre-compute the partial sums in O(N) and binary search for M (O(log N))
+    but if A[i] can be negative => binary search wont work 
+
 ### Blogs with problems solved with algorithms
 * [Alan's Blog Algorithms Decomplexified](http://decomplexify.blogspot.fr/2014/04/wildcard-match-star-and-qmark-asymmetric.html)
 
@@ -1990,3 +2035,74 @@ int i;
 
 #### String sorting for a known set of characters 
 - If you know that the string consist only of certain characters (which is often the case), you can use a variant of BucketSort or RadixSort.
+
+
+#### Prune and Search
+- Prune and search is a method for finding an optimal value by iteratively dividing a search space into two parts – the promising one, which contains the optimal value and is 
+recursively searched and the second part without optimal value, which is pruned (thrown away).
+
+
+#### Decrease and conquer 
+
+
+### Algorithms on Data Structures 
+
+#### Techniques 
+
+
+#### Array 
+
+- For some array problems, the set of elements is a well-order set and we are not allowed to do arithmetics on the elements. We may refer this kind of 
+  problems as string problems if the problem is to find a substring or a subsequence. 
+
+
+#### Techniques for solving problems on arrays 
+
+##### prune and search
+Specifity on arrays is : 
+
+
+##### decrease and conquer 
+Specifity on arrays is : 
+
+
+##### dynamic programming 
+Specifity on arrays is : 
+
+
+  
+#### Problems on Arrays :
+
+##### Find a contiguous subarray satisfying some properties
+
+###### Maximum Sum Subarray Problem 
+
+###### Subarray with Sum Equals t
+
+###### Longest Subarray with Sum Divisible by k
+
+###### Shortest Subarray with Sum is at least k
+
+###### Maximum Double Slice Sum
+
+###### Minimum Average Subarray
+
+###### Maximum Sum with Length Constraint
+
+###### Longest Subarray with Average is at least k
+
+###### Longest Subarray with the Minimum Larger than the Length
+
+###### Maximum Density Subarray with Length Constraint 
+
+##### Find a subsequence (not necessarly contiguous) satisfying some properties
+
+##### Find one element or a pair of elements satisfying some properties:
+
+###### Finding n-th largest number
+
+
+#### Trees 
+
+
+#### Graphs 
