@@ -2090,11 +2090,39 @@ def 4sum(A):
 ###### Bidirectional search
 
 
-### Algorithms on Data Structures 
+### Algorithms and Data Structures problems
 
-#### Techniques 
+#### Searching/Sorting 
 
+##### Binary search
 
+###### Resilient Binary Search
+
+###### Unimodal Search
+
+##### Sorting
+
+###### Partial Sorting
+
+###### Disturbed Array
+
+###### Sort Subarray Minimally
+
+###### Sort an Almost Sorted Array
+
+###### Sorting Points in Circle
+
+###### Sorting O(lg n) Distinct Integers in Time O(n lglg n)
+
+###### Stackless Quicksort
+
+##### Partition
+
+###### Array Partition
+
+###### Dutch National Flag Problem
+ 
+ 
 #### Array 
 
 - For some array problems, the set of elements is a well-order set and we are not allowed to do arithmetics on the elements. We may refer this kind of 
@@ -2160,11 +2188,59 @@ Specifity on arrays is :
 
 ###### Finding n-th largest number
 
-
 #### Trees 
+
+##### Tree Decompositions
+
+###### Centroid decomposition
+
+###### Spine decomposition 
+
+###### Heavy path decomposition
+
+##### Find a vertex satisfying some properties
+
+###### Find center of a tree
+
+###### Find centroid of a tree
+
+###### Find cutting center of a tree
+
+##### Finding a path satisfying some properties
+
+###### Maximum Sum Path
+
+###### Heaviest Path with Length Constraint
+
+###### Enumerate paths with density constraint and sum constraint
+
+###### Maximum sum path with density constraint
+
+##### Range Query
+
+##### Others
 
 
 #### Graphs 
+
+##### DFS/BFS/Topological Sort:
+
+##### Minimum Spanning Tree:
+
+##### Shortest Path
+
+###### Bidirectional search
+- Using meet in the middle technique : finds a shortest path from an initial vertex to a goal vertex in a directed graph. It runs two simultaneous searches: one forward from the initial state, 
+  and one backward from the goal, stopping when the two meet in the middle. 
+
+
+##### Network Flow 
+
+##### Matching
+
+###### Maximum matching in a weighted bipartite graph 
+
+##### Other graph problems 
 
 
 #### Geometric Problems 
