@@ -65,7 +65,6 @@ Note: This is still very much in progress and not polished at all yet.
   the invariant is re-established. This is clearly logarithmic on the total number of items in the tree. By iterating over all items, you get an O(n ln n) sort.
  
  
- 
 ### Binary Search
 Binary search is used to quickly find a value in a sorted sequence (consider a sequence an ordinary array for now). 
 The search space is initially the entire sequence. At each step, the algorithm compares the median value in the search space to the target value. 
@@ -159,6 +158,13 @@ always rounds as we want it to.
 #### Variation of binary search
 
 ##### Fractional cascading
+- Fractional cascading is a data structuring technique designed to support iterative searching in a set of k catalogs.
+- uses information obtained in a search of one catalog to to guide searches of subsequent catalogs.
+
+- fractional cascading is a technique to speed up a sequence of binary searches for the same value in a sequence of related data structures. 
+  The first binary search in the sequence takes a logarithmic amount of time, as is standard for binary searches, but successive searches in 
+  the sequence are faster. 
+
 
 ##### Exponential search
 
@@ -334,6 +340,35 @@ This is very often a problem with pseudo-polynomial time algorithms.
   usually close in memory to the thing you just looked at. By contrast, heapsort jumps around significantly more. 
   the element of the Since things that are close together will likely be cached together, quicksort tends to be faster.
 
+- Quicksort has O(n2) worst-case runtime and O(nlogn) average case runtime. However, it’s superior to merge sort in many 
+  scenarios because many factors influence an algorithm’s runtime, and, when taking them all together, quicksort wins out.
+  In particular, the often-quoted runtime of sorting algorithms refers to the number of comparisons or the number of swaps 
+  necessary to perform to sort the data. This is indeed a good measure of performance, especially since it’s independent of 
+  the underlying hardware design. However, other things – such as locality of reference also play an important role on current 
+  hardware. Quicksort in particular requires little additional space and exhibits good cache locality, and this makes it faster 
+  than merge sort in many cases.
+  Also it’s very easy to avoid quicksort’s worst-case run time of O(n^2) almost entirely by using an appropriate choice of the pivot,
+  such as picking it at random (this is an excellent strategy). 
+
+- The most direct competitor of quicksort is heapsort. Heapsort is typically somewhat slower than quicksort, but the worst-case running time is always Θ(n logn).
+  Quicksort is usually faster, though there remains the chance of worst case performance except in the introsort variant, which switches to heapsort when a bad 
+  case is detected. If it is known in advance that heapsort is going to be necessary, using it directly will be faster than waiting for introsort to switch to it. 
+
+#### Dual-Pivot Quicksort
+Steps:
+1 - For small arrays (length < 17), use the Insertion sort algorithm.
+2 - Choose two pivot elements P1 and P2. We can get, for example, the first element a[left] as P1 and the last element a[right] as P2.
+3 - P1 must be less than P2, otherwise they are swapped. So, there are the following parts:
+        - part I with indices from left+1 to L–1 with elements, which are less than P1,
+        - part II with indices from L to K–1 with elements, which are greater or equal to P1 and less or equal to P2,
+        - part III with indices from G+1 to right–1 with elements greater than P2,
+        - part IV contains the rest of the elements to be examined with indices from K to G.
+4 - The next element a[K] from the part IV is compared with two pivots P1 and P2, and placed to the corresponding part I, II, or III.
+5 - The pointers L, K, and G are changed in the corresponding directions.
+6 - The steps 4 - 5 are repeated while K ≤ G.
+7 - The pivot element P1 is swapped with the last element from part I, the pivot element P2 is swapped with the first element from part III.
+8 - The steps 1 - 7 are repeated recursively for every part I, part II, and part III.
+
 ### MergeSort
 
 * If a dataset is really huge and doesn't fit into memory, then merge sort works better. 
@@ -344,8 +379,6 @@ This is very often a problem with pseudo-polynomial time algorithms.
   Combine: Merge the two sorted subsequences to produce the sorted answer.
   The recursion “bottoms out” when the sequence to be sorted has length 1, in which case there is no work to be done, since every sequence of length 1 is already in
   sorted order. 
-
-
 
 ### American Flag sort 
 - works similar to counting sort in that you need an array to count how often each element appears. So if we sort bytes, 
@@ -371,6 +404,30 @@ read, sorted, and written out to a temporary file. In the merge phase, the sorte
 
 ### In-Place RadixSort 
 
+### Adaptive Sorting 
+- it takes advantage of existing order in its input. It benefits from the presortedness in the input sequence. 
+
+#### Straight Insertion Sort 
+A classic example of an adaptive sorting algorithm is Straight Insertion Sort 
+
+```
+procedure Straight Insertion Sort (X):
+  for j := 1 to length(X) - 1 do
+    t := X[j]
+    i := j
+    while i > 0 and X[i - 1] > t do
+        X[i] := X[i - 1]
+        i := i - 1
+    end
+    X[i] := t
+end
+```
+
+- performance of this algorithm can be described in terms of the number of inversions in the input, and then  T(n) will be roughly equal to  I(A)+(n-1) where  I(A) is the number of Inversions. 
+  Using this measure of presortedness then Straight Insertion Sort takes less time to sort the closer it is to being sorted. 
+
+
+#### SmoothSort 
 
 ### Near Sorting Algorithms
 
@@ -2097,6 +2154,19 @@ def 4sum(A):
 ##### Binary search
 
 ###### Resilient Binary Search
+You are about to search for an element in a sorted array A[1..n] using binary search when the array suddenly gets perturbed. 
+By perturbed, we mean a number in ith position in the array can now be either in i, i-1 or i+1th position; but all the numbers are still in A[1..n]. 
+Can you still search an element in O(log n) time in the perturbed array ?
+
+Solution:
+- the elements can only get swapped. So in order to retrieve the original A[i], we take the second smallest element of A[i-1], A[i] and A[i+1] and proceed with usual binary search.
+
+###### Find missing number in consecutive numbers
+
+###### Find index of peak element in the array
+A peak element is an element that is greater than its neighbors 
+
+###### Circular Binary Search 
 
 ###### Unimodal Search
 
@@ -2218,6 +2288,12 @@ Specifity on arrays is :
 
 ##### Range Query
 
+##### Balancing 
+
+###### Balancing a Binary Tree 
+http://www.algomuse.appspot.com/archivecontest?contest_number=6
+
+
 ##### Others
 
 
@@ -2233,6 +2309,7 @@ Specifity on arrays is :
 - Using meet in the middle technique : finds a shortest path from an initial vertex to a goal vertex in a directed graph. It runs two simultaneous searches: one forward from the initial state, 
   and one backward from the goal, stopping when the two meet in the middle. 
 
+###### Shortest path between sets 
 
 ##### Network Flow 
 
@@ -2244,3 +2321,30 @@ Specifity on arrays is :
 
 
 #### Geometric Problems 
+
+
+#### Math 
+
+##### Numerical:
+
+###### Summation 
+Kahan summation algorithm
+
+
+##### Number Theory
+
+###### Enumerate Primitive Pythagorean Triple
+Design an algorithm to generate all primitive Pythagorean triples
+
+##### Generation:
+
+###### Composition Generation
+Design an algorithm to generate all composition of an integer n.
+
+
+##### Sampling
+
+###### Random Permutation 
+Fisher–Yates shuffle
+ 
+ 
