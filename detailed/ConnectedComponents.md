@@ -43,7 +43,9 @@
          1. assign u as belonging to component whose root is root
          2. for each in-neighbour v of u: assign(v, root)
          
-         
+- [Implementation in java](https://github.com/chemouna/practice/blob/master/src/java/com/mounacheikhna/practice/graph/KosarajuScc.java)
+- [Implementation in python](https://github.com/chemouna/AlgorithmsPy/blob/master/src/com/mounacheikhna/algorithms/graph/kosaraju.py)
+
 ##### Tarjan's strongly connected components algorithm 
 
 ##### Path-based strong component algorithm 
