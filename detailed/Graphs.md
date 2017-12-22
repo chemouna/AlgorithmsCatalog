@@ -1,6 +1,11 @@
 
 # Graphs 
 
+## Dominator 
+- a node d dominates a node n if every path from the entry node to n must go through d. Notationally, this is written as d dom n (or sometimes d >> n). 
+  By definition, every node dominates itself. 
+
+
 ## Articulation Points (Cut Vertices)
 - a cut vertex is any vertex whose removal increases the number of connected components. 
 
@@ -13,3 +18,4 @@
 
 #### Tarjan's Bridge-finding algorithm 
 
+#### Bridge-Finding with Chain Decompositions 
