@@ -30,7 +30,20 @@
     - The first: in the original graph, is used to choose the order in which the outer loop of the second depth first search tests vertices for having been visited already and recursively explores them if not.
     - The second: is on the transpose graph of the original graph, and each recursive exploration finds a single new strongly connected component
 
-
+- Pseudo code: 
+ 1. For each vertex u of the graph, mark u as unvisited, L be empty
+ 2. For each vertex of the graph:
+      if u is unvisited:
+          visit(u) such that visit:
+             1. Mark u as visited
+             2. For each v out-neighbour of u: visit(v)
+             3. prepend u to L 
+ 3. for each u in L: assign(u, u) such that assign(u, root):
+      if u has not been assigned to a component:
+         1. assign u as belonging to component whose root is root
+         2. for each in-neighbour v of u: assign(v, root)
+         
+         
 ##### Tarjan's strongly connected components algorithm 
 
 ##### Path-based strong component algorithm 
@@ -42,6 +55,11 @@
 #### Solve 2-satisfiability problems 
 
 #### Dulmage–Mendelsohn decomposition
+
+## Summary
+- Connected components is usually associated with undirected graphs (two way edges): there is a path between every two nodes.
+- Strongly connected components is usually associated with directed graphs (one way edges): there is a route between every two nodes.
+- Complete graphs are undirected graphs where there is an edge between every pair of nodes.
 
 ## Practice
 
