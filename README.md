@@ -124,8 +124,6 @@ The search space is now moreformally a subinterval of the domain of the function
    we can use binary search to find the smallest legal solution, i.e. the smallest x for which p(x) is true. The first part of devising a solution based on binary search is designing a predicate 
    which can be evaluated and for which it makes sense to use binary search: we need to choose what the algorithm should find. We can have it find either the first x for which p(x) is true or the last x for which p(x) is false
    
-   
-   
 ```
 binary_search(lo, hi, p):
    while lo < hi:
@@ -426,9 +424,30 @@ end
 - performance of this algorithm can be described in terms of the number of inversions in the input, and then  T(n) will be roughly equal to  I(A)+(n-1) where  I(A) is the number of Inversions. 
   Using this measure of presortedness then Straight Insertion Sort takes less time to sort the closer it is to being sorted. 
 
-
 #### SmoothSort 
+- Like heapsort, smoothsort builds up an implicit heap data structure in the array to be sorted, then sorts the array by repeatedly extracting the maximum element from that heap. 
+  Unlike heapsort, which places the root of the heap and largest element at the beginning (left) of the array before swapping it to the end (right), smoothsort places the root of the heap at the right 
 
+- Dijkstra's formulation of smoothsort does not use a binary heap, but rather a custom heap based on the Leonardo numbers it is also possible to use perfect binary trees (of size 2k−1) with the same asymptotic 
+  efficiency.
+
+   Leonardo numbers are similar to the Fibonacci numbers, and defined as:
+   L(0) = L(1) = 1
+   L(k+2) = L(k+1) + L(k) + 1
+  A Leonardo tree of order k ≥ 2 is a binary tree with a root element, and two children which are themselves Leonardo trees, of orders k−1 and k−2. A Leonardo heap resembles a Fibonacci heap in that it is made up 
+  of a collection of heap-ordered Leonardo trees.
+
+  Each tree is an implicit binary tree of size L(k), and the heap consists of a list of trees of decreasing size and increasing root elements. Ordered left-to-right, the rightmost tree is the smallest and its root 
+  element is the global maximum.
+
+  The advantage of this custom heap over a single binary heap is that if the input is already sorted, it can be constructed and deconstructed in O(n) time without moving any data, hence the better runtime.
+
+- Why isnt Smoothsort more common:
+  Quicksort has been the algorithm of choice for unstable, in-place, in-memory sorting for so long because we can implement its inner loop very efficiently and it is very cache-friendly. Even if you can 
+  implement smoothsort's inner loop as efficiently, or nearly as efficiently, as quicksort's, you will probably find that its cache miss rate makes it slower. 
+  
+  
+ 
 ### Near Sorting Algorithms
 
 ## Selection Algorithms
@@ -1162,6 +1181,18 @@ bipartite graphs form a model of interaction between two different types of obje
 - balanced bipartite : when the two sets V1 and V2 that make it bipartite are such that |V1| = |V2|
 
 ### Steiner trees 
+
+### Other graph subjects 
+
+#### Chromatic Number 
+
+#### Planar Graphs 
+
+#### The Seven Bridges of Königsberg
+
+#### Eulerian path and circuit 
+
+#### Clique in a graph 
 
 
 ## Overlapping subproblems
@@ -2161,6 +2192,32 @@ Can you still search an element in O(log n) time in the perturbed array ?
 Solution:
 - the elements can only get swapped. So in order to retrieve the original A[i], we take the second smallest element of A[i-1], A[i] and A[i+1] and proceed with usual binary search.
 
+###### Solving variations of binary search 
+assume we have a monotonically increasing function f: [a, b] -> {0,1} and we want to find the smallest number i from [a, b] with f(i) = 1, or b if no such number exists. 
+The following algorithm will compute that result: 
+
+```
+lo = a, hi = b
+while lo < hi:
+    # invariant: lo <= i <= hi
+    mid = (lo + hi)/2  # or lo + (hi - lo) / 2 to avoid overflows
+    if f(mid): 
+        hi = mid
+    else: 
+        lo = mid + 1
+```
+Examples:
+- Smallest number greater than or equal to target (but leftmost of duplicates) 
+  Use a = 0, b = n, f(i) = array[i] >= target
+
+- Largest number less than target (but rightmost of duplicates)
+  Use a = -1, b = n - 1, f(i) = (array[i+1] >= target).
+
+- Largest number less than target (but leftmost of duplicates)
+  This requires two searches, You can use the solution for the previous case (1) (say index i) and then use a = 0, b = i, f(j) = array[j] == array[i] to find the leftmost duplicate.
+
+ 
+
 ###### Find missing number in consecutive numbers
 
 ###### Find index of peak element in the array
@@ -2212,7 +2269,6 @@ Specifity on arrays is :
 ##### dynamic programming 
 Specifity on arrays is : 
 
-
   
 #### Problems on Arrays :
 
@@ -2257,6 +2313,11 @@ Specifity on arrays is :
 ##### Find one element or a pair of elements satisfying some properties:
 
 ###### Finding n-th largest number
+
+##### Median
+
+###### Median of two sorted arrays 
+
 
 #### Trees 
 
@@ -2347,4 +2408,13 @@ Design an algorithm to generate all composition of an integer n.
 ###### Random Permutation 
 Fisher–Yates shuffle
  
- 
+##### Other
+
+###### Zeller's congruence
+- If you run a year from March through February, the cumulative number of days in each month forms a nearly straight line; that works because February, 
+  which would normally perturb the straight line, is moved to the end. He worked out the formula ⌊(13m−1)/5⌋ to give the number of weekdays that the start 
+  of the month moves each month, where m is the month number.
+  
+- then to calculate the day of the week for any given day: add the day of the month, the offset for the number of months since March, an offset for each year, 
+  and additional offsets for leap years and leap centuries (remembering to subtract one year for dates in January and February), taking the whole thing mod 7 
+
