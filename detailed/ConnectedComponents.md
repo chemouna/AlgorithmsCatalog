@@ -58,6 +58,23 @@
 
 #### Dulmage–Mendelsohn decomposition
 
+## Biconnected components
+- Any connected graph decomposes into a tree of biconnected components called the block-cut tree of the graph. The blocks are attached to each other at shared vertices called cut vertices or articulation points. 
+
+### Algorithms 
+
+#### Linear time DFS 
+- Algorithm: 
+     run a depth-first search while maintaining the following information:
+        - the depth of each vertex in the depth-first-search tree (once it gets visited), and
+        - for each vertex v, the lowest depth of neighbors of all descendants of v (including v itself) in the depth-first-search tree, called the lowpoint.
+   
+ The lowpoint of v can be computed after visiting all descendants of v (i.e., just before v gets popped off the depth-first-search stack) as the minimum of the depth of v, 
+ the depth of all neighbors of v (other than the parent of v in the depth-first-search tree) and the lowpoint of all children of v in the depth-first-search tree.
+
+## Triconnected Components (SPQR tree)
+
+
 ## Summary
 - Connected components is usually associated with undirected graphs (two way edges): there is a path between every two nodes.
 - Strongly connected components is usually associated with directed graphs (one way edges): there is a route between every two nodes.
