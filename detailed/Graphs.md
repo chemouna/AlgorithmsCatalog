@@ -1,6 +1,18 @@
 
 # Graphs 
 
+## Types of graphs
+
+### Clique graph
+ 
+### De Bruijn graph
+
+### Petersen graph
+- is an undirected graph with 10 vertices and 15 edges. It is a small graph that serves as a useful example and counterexample for many problems in graph theory.
+
+### Planar graph
+ 
+ 
 ## Dominator 
 - a node d dominates a node n if every path from the entry node to n must go through d. Notationally, this is written as d dom n (or sometimes d >> n). 
   By definition, every node dominates itself. 
@@ -19,3 +31,4 @@
 #### Tarjan's Bridge-finding algorithm 
 
 #### Bridge-Finding with Chain Decompositions 
+
