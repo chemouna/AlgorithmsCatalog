@@ -48,6 +48,13 @@
 
 ##### Tarjan's strongly connected components algorithm 
 
+- lowlink : low-link value is initially equal to which number the node has during the initial DFS. If it's the first node visited, the value will be 0. 
+  If it's the second node, it will be 1. The third node has value 2, the fourth value 3, etc.
+  From there, the low-link value is updated so that it tracks which SCC the given node happens to be in. The idea is that initially we consider each node 
+  to be in its own SCC, but then if we find that two different nodes are in the same SCC, we update the low-link values of all of these nodes so that they're all the same.
+
+- A side-effect of Tarjan's SCC components algorithm is that the SC components pop off the stack in topological order. 
+
 ##### Path-based strong component algorithm 
 
 #### Reachability-based SCC algorithms
