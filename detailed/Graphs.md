@@ -12,7 +12,9 @@
 
 ### Planar graph
  
- 
+### Split graph
+- a split graph is a graph in which the vertices can be partitioned into a clique and an independent set. 
+
 ## Dominator 
 - a node d dominates a node n if every path from the entry node to n must go through d. Notationally, this is written as d dom n (or sometimes d >> n). 
   By definition, every node dominates itself. 
