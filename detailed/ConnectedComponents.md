@@ -47,6 +47,12 @@
 - [Implementation in python](https://github.com/chemouna/AlgorithmsPy/blob/master/src/com/mounacheikhna/algorithms/graph/kosaraju.py)
 
 ##### Tarjan's strongly connected components algorithm 
+- The main idea is: When traversing the tree, every time you've searched through a branch and are backtracking, you check whether you've 
+  encountered an edge to an 'upper' node in the tree.
+      * If you didn't (if (v.lowlink = v.index)), then you've just completed an SCC - it consists of the current node and all nodes on the 
+         stack. That's exactly a subtree of the DFS tree, except for the nodes in SCCs that were already completed.
+      * If you did, you propagate this information to 'upper' nodes (v.lowlink := min(v.lowlink, w.lowlink)), because combined with the path 
+        in DFS tree the edge creates an 'upward' path.
 
 - lowlink : low-link value is initially equal to which number the node has during the initial DFS. If it's the first node visited, the value will be 0. 
   If it's the second node, it will be 1. The third node has value 2, the fourth value 3, etc.
