@@ -15,6 +15,24 @@
 ### Split graph
 - a split graph is a graph in which the vertices can be partitioned into a clique and an independent set. 
 
+## Paths 
+
+### Simple Path 
+- A path that does not repeat vertices is called a simple path. 
+
+### Open Path
+- is a path starts and ends at different vertices 
+
+### Closed Path
+- is a path that starts and ends at the same vertex
+
+### Induced Path
+- an induced path in an undirected graph G is a path that is an induced subgraph of G. That is, it is a sequence of vertices in G such that each two adjacent vertices in 
+  the sequence are connected by an edge in G, and each two nonadjacent vertices in the sequence are not connected by any edge in G. An induced path is sometimes called a snake \
+
+### Hamiltonian path
+- is a path in an undirected or directed graph that visits each vertex exactly once. A Hamiltonian cycle (or Hamiltonian circuit) is a Hamiltonian path that is a cycle.
+
 ## Dominator 
 - a node d dominates a node n if every path from the entry node to n must go through d. Notationally, this is written as d dom n (or sometimes d >> n). 
   By definition, every node dominates itself. 
