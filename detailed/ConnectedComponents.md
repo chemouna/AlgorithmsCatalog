@@ -62,6 +62,9 @@
 - A side-effect of Tarjan's SCC components algorithm is that the SC components pop off the stack in topological order. 
 
 - [Implementation in java](https://github.com/chemouna/practice/blob/master/src/java/com/mounacheikhna/practice/graph/scc/TarjanStronglyConnectedComponents.java)
+- [Implementatiom in python](https://github.com/chemouna/AlgorithmsPy/blob/master/src/com/mounacheikhna/algorithms/graph/tarjanscc.py)
+- [Implementatiom in kotlin](https://github.com/chemouna/KotlinAlgorithms/blob/master/src/com/mounacheikhna/algorithms/graphs/TarjanScc.kt)
+- [Implementatiom in go](https://github.com/chemouna/GoAlgorithms/blob/master/tarjanscc.go)
 
 ##### Path-based strong component algorithm 
 
