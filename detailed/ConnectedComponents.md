@@ -66,6 +66,10 @@
 - [Implementatiom in kotlin](https://github.com/chemouna/KotlinAlgorithms/blob/master/src/com/mounacheikhna/algorithms/graphs/TarjanScc.kt)
 - [Implementatiom in go](https://github.com/chemouna/GoAlgorithms/blob/master/tarjanscc.go)
 
+###### Tarjan's SCC algorithm application exercices
+
+1 - Codeforce CheckPosts problem: [Problem Statement](http://codeforces.com/problemset/problem/427/C?mobile=false&locale=en) , [Solution in C++](https://github.com/chemouna/competitveprogramming/blob/master/competitveprogramming-cpp/codeforces/Checkposts.cpp)
+
 ##### Path-based strong component algorithm 
 
 #### Reachability-based SCC algorithms
