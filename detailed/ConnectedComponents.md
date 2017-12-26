@@ -68,7 +68,8 @@
 
 ###### Tarjan's SCC algorithm application exercices
 
-1 - Codeforce CheckPosts problem: [Problem Statement](http://codeforces.com/problemset/problem/427/C?mobile=false&locale=en) , [Solution in C++](https://github.com/chemouna/competitveprogramming/blob/master/competitveprogramming-cpp/codeforces/Checkposts.cpp)
+1 - Codeforce [CheckPosts problem](http://codeforces.com/problemset/problem/427/C?mobile=false&locale=en): [Solution in C++](https://github.com/chemouna/competitveprogramming/blob/master/competitveprogramming-cpp/codeforces/Checkposts.cpp)
+2 - Open Kattis [Proving Equivalen Problem](https://open.kattis.com/problems/equivalences): [Solution in C++](https://github.com/chemouna/competitveprogramming/blob/master/competitveprogramming-cpp/openkattis/ProvingEquivalence.cpp)
 
 ##### Path-based strong component algorithm 
 
