@@ -34,3 +34,9 @@ ordering vertices by descreasing finish times computed by DFS is a valid topolog
 
 ### Longest Path 
 longest paths in a DAG can be computed in linear time using DFSi
+
+### Articulation Vertices and Biconnected components 
+there's a linear-time algorithm using DFS, developed by Hopcroft and Tarjan and Tarjan, to identify the cut vertices and biconnected components of a connected graph. The algorithm uses the global 
+variable time that is incremented every time a new vertex is visited or when DFS finishes visiting a vertex, for more details on this see the post on Connected components.
+ 
+ 
