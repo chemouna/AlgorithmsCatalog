@@ -19,3 +19,12 @@ Divisibility by 3: A is divisible by 3 iff s+(A) is divisible by 3.
 Divisibility by 9: A is divisible by 9 iff s+(A) is divisible by 9.
 
 Divisibility by 11: A is divisible by 11 iff s±(A) is.
+
+A function f(A) = f(a(n), …, a(0) is called a divisibility criterion by an integer d provided, starting with some A, |f(A)| < A and A is divisible by d iff f(A) is divisible by d.
+O(d): the set of all divisibility criteria by d.
+```
+f7(A)=(a(2) . a(1) . a(0)) base10 − (a(5) . a(4) . a(3)) base10 + (a(8) . a(7) . a(6)) base10 −...∈ O(1001)
+```
+in some cases this rule helps, for example: 2,003,008 is divisible by 7 for so is (008) − (003) +2 = 7.
+
+
