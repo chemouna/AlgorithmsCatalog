@@ -7,6 +7,10 @@ A natural number is a prime number if it has exactly two positive divisors, 1 an
 ## Composite number
 A natural number greater than 1 that is not a prime number is called a composite number.
 
+### Prime Factorization 
+
+#### Prime Factorization Algorithms
+
 ## Coprime numbers
 Coprime numbers are a set of integers that have no common divisor other than 1 or -1.
  
@@ -20,11 +24,66 @@ Primes can thus be considered the “basic building blocks” of the natural num
 
 ## Primality Tests
 
-### Miller–Rabin primality test
+### Miller–Rabin Primality Test
 
-### AKS primality test
+```python
+def is_primer_miller_rabin(n, k=10):
+    """
+    Miller-Rabin primality test.
 
-## Sieve of Eratosthenes
+    A return value of False means n is certainly not prime. A return value of
+    True means n is very likely a prime.
+    """
+    if n == 2:
+        return True
+    if not n & 1:
+        return False
+
+    def check(a, s, d, n):
+        x = pow(a, d, n)
+        if x == 1:
+            return True
+        for i in xrange(s - 1):
+            if x == n - 1:
+                return True
+            x = pow(x, 2, n)
+        return x == n - 1
+
+    s = 0
+    d = n - 1
+
+    while d % 2 == 0:
+        d >>= 1
+        s += 1
+
+    for i in xrange(k):
+        a = random.randrange(2, n - 1)
+        if not check(a, s, d, n):
+            return False
+    return True
+```
+
+
+### AKS Primality Test
+
+### Fermat Primality Test
+
+#### Fermat’s little theorem 
+ if p is a prime number and a is a positive integer less than p, then
+```
+ap = a ( mod p )
+```
+or alternatively:
+```
+a(p-1) = 1 ( mod p )
+```
+
+
+### Sieves
+
+#### Sieve of Eratosthenes
+
+#### Sieve of Atkin
 
 ## Segmented Sieve
 
@@ -32,5 +91,9 @@ Primes can thus be considered the “basic building blocks” of the natural num
  
 ## Euler’s totient function
 
-## Fermat’s little theorem
+## Number of prime numbers below a given number
+ 
+## Pollard’s rho algorithm
+
+
 
