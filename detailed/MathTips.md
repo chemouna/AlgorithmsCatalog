@@ -27,4 +27,25 @@ f7(A)=(a(2) . a(1) . a(0)) base10 − (a(5) . a(4) . a(3)) base10 + (a(8) . a(7)
 ```
 in some cases this rule helps, for example: 2,003,008 is divisible by 7 for so is (008) − (003) +2 = 7.
 
+## Repeated Squaring
+Repeated squaring, or repeated doubling is an algorithm that computes integer powers of a number quickly. The general problem is to compute x^{y} for an arbitrary integer y. 
+The naive method, doing y multiplications of x, is very slow. It can be sped up by repeatedly squaring x until the current power of x exceeds y.
+
+```
+// Calculates n to the p power, where p is a positive number.
+func power(var n as integer, var p as integer)
+   if p = 0 return 1
+   if p = 1 return n
+   if p is odd
+      return n * power( n * n, (p-1) / 2 )
+   else
+      return power( n * n, p / 2 )
+end 
+```
+
+there's this also this useful relation for modular arithmetic:
+```
+(x * y) mod m = ((x mod m) * (y mod m)) mod m
+``` 
+
 
