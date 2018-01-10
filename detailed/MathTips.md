@@ -48,4 +48,11 @@ there's this also this useful relation for modular arithmetic:
 (x * y) mod m = ((x mod m) * (y mod m)) mod m
 ``` 
 
+## Euclid Algorithm
+
+### Euclidean division
+Euclidean division is the process of division of two integers, which produces a quotient and a remainder.
+
+
+### Modular multiplicative inverse
 
