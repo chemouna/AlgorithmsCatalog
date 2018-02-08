@@ -251,7 +251,6 @@ void sort(int [] a, int n) {
 
 ### IntroSort 
 
-
 ### Counting Sort 
 
 - Counting sort is an algorithm for sorting a collection of objects according to keys that are small integers (an integer sorting algorithm). 
@@ -446,7 +445,49 @@ end
   Quicksort has been the algorithm of choice for unstable, in-place, in-memory sorting for so long because we can implement its inner loop very efficiently and it is very cache-friendly. Even if you can 
   implement smoothsort's inner loop as efficiently, or nearly as efficiently, as quicksort's, you will probably find that its cache miss rate makes it slower. 
   
-  
+## Comb Sort 
+improves on bubble sort, In bubble sort, when any two elements are compared, they always have a gap (distance from each other) of 1. The basic idea of comb sort is that the gap can be much more than 1. 
+The inner loop of bubble sort, which does the actual swap, is modified such that gap between swapped elements goes down (for each iteration of outer loop) in steps of a "shrink factor" k: [ n/k, n/k2, n/k3, ..., 1 ].
+
+Bubble sorts are also slow because they are susceptible to the birth of elements we call turtles. A turtle (in an ascending sort) is a relatively low value located near the end of a list. During a bubble sort, 
+this element moves up only one position for each pass (or stroke), so a single turtle can cause maximal slowing. Almost every long random list contains a turtle.
+
+On the other hand, a high- value element near the top of a list (a rabbit) is harmless. If you reverse the direction of the stroke, turtles become rabbits and rabbits become turtles. The worst possible turtle is 
+the lowest relative value at the end of a list. It forces a bubble sort to make (N-1)^2 comparisons. This means that a bubble sort of a 1000-item list could require nearly a million comparisons.
+
+```
+ function combsort(array input)
+
+    gap := input.size // Initialize gap size
+    shrink := 1.3 // Set the gap shrink factor
+    sorted := false
+
+    loop while sorted = false
+        // Update the gap value for a next comb
+        gap := floor(gap / shrink)
+        if gap > 1
+            sorted := false // We are never sorted as long as gap > 1
+        else
+            gap := 1
+            sorted := true // If there are no swaps this pass, we are done
+        end if
+
+        // A single "comb" over the input list
+        i := 0
+        loop while i + gap < input.size // See Shell sort for a similar idea
+            if input[i] > input[i+gap]
+                swap(input[i], input[i+gap])
+                sorted := false
+                // If this assignment never happens within the loop,
+                // then there have been no swaps and the list is sorted.
+             end if
+
+             i := i + 1
+         end loop
+         
+     end loop
+ end function
+```
  
 ### Near Sorting Algorithms
 
