@@ -19,5 +19,20 @@ while (hi > lo + 1) {
 
 [For an example check here](http://wilanw.blogspot.fr/2009/08/binary-search-algorithm.html)
 
-## Binary Search Trees
+## Binary Search on Reals 
+
+```
+int binarySearch() {
+  // want: lo is always <x, and hi always >=x
+  double lo, hi, mi; lo=a; hi=b;
+  while(lo + EPS < hi) {
+    // you need to decide what is the right EPS, 1e-9? 
+    mid=(lo + hi) / 2.0;
+    if(mi is too small) {
+       lo=mi; else hi=mi; 
+    }
+ }
+ return hi; 
+}
+```
 
