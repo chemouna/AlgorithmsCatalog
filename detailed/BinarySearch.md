@@ -28,8 +28,11 @@ int binarySearch() {
   while(lo + EPS < hi) {
     // you need to decide what is the right EPS, 1e-9? 
     mid=(lo + hi) / 2.0;
-    if(mi is too small) {
-       lo=mi; else hi=mi; 
+    if(mid is too small) {
+       lo=mid; 
+    }
+    else {
+     hi=mid; 
     }
  }
  return hi; 
