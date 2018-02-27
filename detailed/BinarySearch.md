@@ -97,4 +97,34 @@ Don't forget that the P property must hold for all numbers from certain x. If it
 you will just find some x for which P(x) is satisfied and P(x-1) is not.
 
 
+## Ternary Search 
+Problem:
 
+You have a function f in an interval [a,b] of real numbers, and you want to find the x for which f(x) is maximized. You know that the function f is unimodal: it is strictly increasing in the interval [a,x], and strictly decreasing in the interval [x,b].
+
+Solution:
+
+If we are working with an interval of integers, not an interval of reals, simply use binary search (see "binary search" recipe). (The property P(x) we are working with is the following one: f(x) > f(x+1).)
+
+For reals, use the following algorithm, known as ternary search:
+```java
+double l = a, r = b;
+ 
+for(int i=0; i<200; i++) {
+  double l1 = (l*2+r)/3;
+  double l2 = (l+2*r)/3;
+  if(f(l1) > f(l2)) {
+    r = l2; 
+  } 
+  else {
+    l = l1;
+  }
+}
+x = l;
+```
+- This works because after each step the interval [a,b] is reduced to 2/3 of its previous size. After 200 steps, we will know the answer up to an error of at most (2/3)^200 of the original interval, 
+- Don't forget that ternary search is not the only way of finding the maximum of a function; some basic knowledge of differentiation might also be helpful. In case if f is easily differentiable, 
+  you need to find x such that f'(x)=0; for some functions f such x can be calculated easily, without having to go through 200 iterations. For example, we can easily check that the function f(x) = x(1-x)
+  reaches its maximum at 1/2. However, you need to be careful about floating point errors and situations where the maximum is reached at the end of the interval.
+  
+  
